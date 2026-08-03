@@ -18,7 +18,7 @@ export interface IndexQualityInput {
   areaOrCategoryVerified?: boolean;
 }
 
-export function absoluteUrl(path: string, siteUrl = SITE.publicDomain): string {
+export function absoluteUrl(path: string, siteUrl: string = SITE.publicDomain): string {
   const base = siteUrl.replace(/\/$/, "");
   const normalized = path.startsWith("/") ? path : `/${path}`;
   const withSlash = normalized.endsWith("/") ? normalized : `${normalized}/`;
@@ -58,7 +58,7 @@ export function robotsContent(noindex: boolean): string {
   return noindex ? "noindex, nofollow" : "index, follow";
 }
 
-export function organizationJsonLd(siteUrl: string) {
+export function organizationJsonLd(_siteUrl?: string) {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",

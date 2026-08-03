@@ -7,19 +7,23 @@ interface Props {
 }
 
 export default function PortfolioBar({ caseStudyUrl }: Props) {
-  const [visible, setVisible] = useState(false);
+  // Start visible to avoid CLS; hide after mount if previously dismissed.
+  const [visible, setVisible] = useState(true);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     setVisible(!isPortfolioBarDismissed());
+    setReady(true);
   }, []);
 
-  if (!visible) return null;
+  if (ready && !visible) return null;
 
   return (
     <div
       className="border-b border-navy/10 bg-navy text-white"
       role="region"
       aria-label="Che Xu Studio portfolio notice"
+      style={{ minHeight: "var(--portfolio-bar-h)" }}
     >
       <div className="container-page flex min-h-[var(--portfolio-bar-h)] flex-wrap items-center justify-between gap-3 py-2">
         <p className="max-w-3xl text-sm leading-snug text-white/95">

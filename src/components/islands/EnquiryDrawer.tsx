@@ -66,6 +66,14 @@ export default function EnquiryDrawer({ packagesUrl, turnstileSiteKey }: Props) 
       setOpen(true);
       track("portfolio_lead_started");
       track("che_xu_cta_selected", { location: "enquiry_drawer" });
+      if (!document.querySelector("script[data-turnstile]")) {
+        const script = document.createElement("script");
+        script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
+        script.async = true;
+        script.defer = true;
+        script.dataset.turnstile = "true";
+        document.head.appendChild(script);
+      }
     };
     window.addEventListener("localpro:open-enquiry", openHandler);
     return () => window.removeEventListener("localpro:open-enquiry", openHandler);

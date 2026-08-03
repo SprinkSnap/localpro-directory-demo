@@ -59,21 +59,28 @@ const jsonLdItems = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Outfit:wght@600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Outfit:wght@600;700&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Outfit:wght@600;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
     {
       jsonLdItems.map((item) => (
-        <script type="application/ld+json" set:html={JSON.stringify(item)} />
+        <script is:inline type="application/ld+json" set:html={JSON.stringify(item)} />
       ))
     }
-    <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   </head>
   <body class="min-h-screen">
     <a class="skip-link" href="#main">Skip to main content</a>
-    <PortfolioBar client:load caseStudyUrl={env.caseStudyUrl} />
+    <PortfolioBar client:idle caseStudyUrl={env.caseStudyUrl} />
     <ConceptDisclosure compact />
-    <SiteHeader client:load />
+    <SiteHeader client:idle />
     <main id="main">
       <slot />
     </main>

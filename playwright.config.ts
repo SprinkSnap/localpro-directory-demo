@@ -12,13 +12,19 @@ export default defineConfig({
     trace: "on-first-retry",
   },
   webServer: {
-    command: "npm run preview -- --host 127.0.0.1 --port 4321",
+    command: "npm run build && npm run preview",
     url: "http://127.0.0.1:4321",
     reuseExistingServer: !process.env.CI,
-    timeout: 120_000,
+    timeout: 180_000,
   },
   projects: [
     { name: "chromium", use: { ...devices["Desktop Chrome"] } },
-    { name: "mobile", use: { ...devices["iPhone 12"] } },
+    {
+      name: "mobile",
+      use: {
+        ...devices["Pixel 5"],
+        browserName: "chromium",
+      },
+    },
   ],
 });

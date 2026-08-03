@@ -8,7 +8,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
+    "preview": "wrangler dev --local --port 4321 --ip 127.0.0.1",
     "check": "astro check && tsc --noEmit",
     "lint": "eslint . --max-warnings=0",
     "format": "prettier --write .",
@@ -21,7 +21,7 @@
     "db:seed:local": "tsx scripts/seed-d1.ts --local",
     "db:reset:local": "npm run db:migrate:local && npm run db:seed:local",
     "seed:generate": "tsx scripts/generate-seed.ts",
-    "wrangler:dry-run": "wrangler deploy --dry-run --outdir=.wrangler-dry-run",
+    "wrangler:dry-run": "wrangler deploy --dry-run --outdir=.wrangler-dry-run --env=\"\"",
     "loadtest:local": "tsx scripts/load-test.ts"
   },
   "engines": {

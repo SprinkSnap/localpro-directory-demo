@@ -25,7 +25,7 @@ export function validateContentType(request: Request, expected = "application/js
 
 export async function readJsonLimited<T = unknown>(
   request: Request,
-  maxBytes = SEARCH_LIMITS.maxLeadBodyBytes,
+  maxBytes: number = SEARCH_LIMITS.maxLeadBodyBytes,
 ): Promise<{ ok: true; data: T } | { ok: false; error: string }> {
   const lengthHeader = request.headers.get("content-length");
   if (lengthHeader && Number(lengthHeader) > maxBytes) {
