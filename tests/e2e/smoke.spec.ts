@@ -14,6 +14,18 @@ test.describe("LocalPro Directory smoke", () => {
     );
   });
 
+  test("mobile hamburger opens and closes navigation", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto("/");
+    const menuButton = page.getByRole("button", { name: /Open navigation menu/i });
+    await expect(menuButton).toBeVisible();
+    await menuButton.click();
+    await expect(page.getByRole("navigation", { name: "Mobile" })).toBeVisible();
+    await expect(page.getByRole("button", { name: /Close navigation menu/i })).toBeVisible();
+    await page.getByRole("button", { name: /Close navigation menu/i }).click();
+    await expect(page.getByRole("navigation", { name: "Mobile" })).toHaveCount(0);
+  });
+
   test("search filters and pagination work", async ({ page }) => {
     await page.goto("/search/?q=cleaning");
     await expect(page.getByRole("heading", { name: /Search results/i })).toBeVisible();

@@ -19,6 +19,28 @@ const MOBILE_LINKS = [
   { href: "/how-it-works/", label: "How It Works" },
 ];
 
+function HamburgerIcon({ open }: { open: boolean }) {
+  return (
+    <span className="relative block h-5 w-6" aria-hidden="true">
+      <span
+        className={`absolute left-0 top-0.5 block h-0.5 w-6 rounded-full bg-current transition duration-200 ease-out ${
+          open ? "translate-y-2 rotate-45" : ""
+        }`}
+      />
+      <span
+        className={`absolute left-0 top-[0.575rem] block h-0.5 w-6 rounded-full bg-current transition duration-200 ease-out ${
+          open ? "scale-x-0 opacity-0" : ""
+        }`}
+      />
+      <span
+        className={`absolute left-0 top-[1.05rem] block h-0.5 w-6 rounded-full bg-current transition duration-200 ease-out ${
+          open ? "-translate-y-2 -rotate-45" : ""
+        }`}
+      />
+    </span>
+  );
+}
+
 export default function SiteHeader() {
   const [open, setOpen] = useState(false);
   const panelId = useId();
@@ -49,8 +71,8 @@ export default function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-navy/10 bg-white/95 backdrop-blur">
       <div className="container-page flex h-header items-center justify-between gap-3">
-        <a href="/" className="inline-flex items-center gap-2.5 focus-visible:rounded-md">
-          <svg className="h-9 w-9" viewBox="0 0 48 48" role="img" aria-label="LocalPro Directory">
+        <a href="/" className="inline-flex min-w-0 items-center gap-2.5 focus-visible:rounded-md">
+          <svg className="h-9 w-9 shrink-0" viewBox="0 0 48 48" role="img" aria-label="LocalPro Directory">
             <rect width="48" height="48" rx="12" fill="#10243E" />
             <path
               d="M24 10c-6.2 0-11 4.7-11 10.6 0 7.4 9.1 15.7 10.5 16.9a.8.8 0 0 0 1 0C25.9 36.3 35 28 35 20.6 35 14.7 30.2 10 24 10Z"
@@ -110,12 +132,13 @@ export default function SiteHeader() {
         <button
           ref={buttonRef}
           type="button"
-          className="btn-secondary min-h-11 px-3 lg:hidden"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-navy/15 bg-white text-navy shadow-soft transition hover:border-search/40 hover:bg-search-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-search lg:hidden"
           aria-expanded={open}
           aria-controls={panelId}
+          aria-label={open ? "Close navigation menu" : "Open navigation menu"}
           onClick={() => setOpen((v) => !v)}
         >
-          {open ? "Close" : "Menu"}
+          <HamburgerIcon open={open} />
         </button>
       </div>
 
@@ -130,7 +153,7 @@ export default function SiteHeader() {
           <div
             ref={panelRef}
             id={panelId}
-            className="absolute left-0 right-0 z-50 border-b border-navy/10 bg-white shadow-raised"
+            className="absolute left-0 right-0 z-50 max-h-[calc(100dvh-var(--header-h)-var(--portfolio-bar-h))] overflow-y-auto border-b border-navy/10 bg-white shadow-raised animate-slide-up"
             style={{ paddingBottom: "calc(1rem + var(--safe-bottom))" }}
           >
             <nav aria-label="Mobile" className="container-page flex flex-col gap-1 py-4">
@@ -144,23 +167,25 @@ export default function SiteHeader() {
                   {link.label}
                 </a>
               ))}
-              <button
-                type="button"
-                className="btn-accent mt-2 w-full"
-                onClick={() => {
-                  closeMenu();
-                  track("che_xu_cta_selected", { location: "mobile_nav" });
-                  window.dispatchEvent(new CustomEvent("localpro:open-enquiry"));
-                }}
-              >
-                Build a Directory Like This
-              </button>
-              <a href="/search/" className="btn-primary w-full" onClick={closeMenu}>
-                Find a Local Pro
-              </a>
-              <a href="/submit-listing/" className="btn-secondary w-full" onClick={closeMenu}>
-                List Your Business
-              </a>
+              <div className="mt-3 grid gap-2 border-t border-navy/10 pt-4">
+                <button
+                  type="button"
+                  className="btn-accent w-full"
+                  onClick={() => {
+                    closeMenu();
+                    track("che_xu_cta_selected", { location: "mobile_nav" });
+                    window.dispatchEvent(new CustomEvent("localpro:open-enquiry"));
+                  }}
+                >
+                  Build a Directory Like This
+                </button>
+                <a href="/search/" className="btn-primary w-full" onClick={closeMenu}>
+                  Find a Local Pro
+                </a>
+                <a href="/submit-listing/" className="btn-secondary w-full" onClick={closeMenu}>
+                  List Your Business
+                </a>
+              </div>
             </nav>
           </div>
         </div>
