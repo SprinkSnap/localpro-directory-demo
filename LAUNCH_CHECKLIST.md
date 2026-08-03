@@ -4,9 +4,8 @@
 
 - [ ] Confirm explicit authorization to deploy
 - [ ] Confirm `DEMO_MODE=true` for the portfolio demonstration
-- [ ] Replace placeholder D1 `database_id` in `wrangler.toml`
-- [ ] Create D1 database and apply migrations
-- [ ] Seed fictional data in the target environment
+- [ ] (Optional) Create D1 database, uncomment D1 binding in `wrangler.toml`, apply migrations, and seed
+- [ ] Confirm deploy does not reference placeholder KV/D1 ids
 - [ ] Set `TURNSTILE_SECRET_KEY` as a Worker secret
 - [ ] Set production Turnstile site key (not test keys) if collecting real Che Xu Studio leads
 - [ ] Confirm `ALLOWED_ORIGINS` includes only intended hosts
@@ -43,8 +42,8 @@
 ## Launch blockers (must be resolved by owner)
 
 1. No deployment authorization yet
-2. Placeholder D1 database id
-3. Production Turnstile secrets not provisioned
-4. Custom domain / DNS not configured
-5. Che Xu Studio case-study page not published from `CASE_STUDY_COPY.md`
-6. Lead notification destination (email/CRM) not connected
+2. Production Turnstile secrets not provisioned
+3. Custom domain / DNS not configured
+4. Che Xu Studio case-study page not published from `CASE_STUDY_COPY.md`
+5. Lead notification destination (email/CRM) not connected
+6. (Optional) Real D1 database if portfolio-lead persistence is required

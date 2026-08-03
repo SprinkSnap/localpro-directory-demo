@@ -88,6 +88,17 @@ When `DEMO_MODE=false` (future real directory):
 6. Configure custom domain `localprodirectory.chexustudio.com`
 7. Deploy only with explicit authorization
 
+### Cloudflare Workers Builds settings
+
+| Setting | Value |
+| --- | --- |
+| Build command | `npm run build` |
+| Deploy command | `npx wrangler deploy` |
+| Root directory | `/` |
+| Node.js | `20`+ |
+
+This demo deploys without D1/SESSION bindings. Search and listings use deterministic in-memory seed data. Add a real D1 database later (see commented block in `wrangler.toml`) if you want portfolio-lead persistence.
+
 Dry run:
 
 ```bash

@@ -16,6 +16,11 @@ export default defineConfig({
     },
     imageService: "compile",
   }),
+  // This demo does not use Astro sessions. Use a null driver so the Cloudflare
+  // adapter does not require a SESSION KV namespace for deploy.
+  session: {
+    driver: "unstorage/drivers/null",
+  },
   integrations: [
     react(),
     tailwind({

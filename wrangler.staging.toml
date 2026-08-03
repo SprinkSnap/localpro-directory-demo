@@ -1,0 +1,17 @@
+name = "localpro-directory-demo-staging"
+main = "dist/_worker.js/index.js"
+compatibility_date = "2025-10-01"
+compatibility_flags = ["nodejs_compat"]
+
+[assets]
+directory = "dist"
+binding = "ASSETS"
+
+[vars]
+DEMO_MODE = "true"
+PUBLIC_SITE_URL = "https://localpro-directory-demo-staging.workers.dev"
+PUBLIC_STUDIO_URL = "https://chexustudio.com"
+PUBLIC_CASE_STUDY_URL = "https://chexustudio.com/work/localpro-directory"
+PUBLIC_PACKAGES_URL = "https://chexustudio.com/packages"
+PUBLIC_TURNSTILE_SITE_KEY = "1x00000000000000000000AA"
+ALLOWED_ORIGINS = "https://localpro-directory-demo-staging.workers.dev,http://localhost:4321"
