@@ -87,14 +87,20 @@ Populate after running Lighthouse against the authorized preview/production depl
 Do not invent performance scores. Replace this section with measured results and dates.
 
 ### Screenshots
-Add desktop and mobile screenshots from the live demo after deployment authorization:
+Recommended mobile captures (iPhone 14 Pro, 393×852 @3x) live in the repo:
 
-- Homepage hero + search
-- Search results with filters
-- Listing detail
-- Compare view
-- Quote-request demo
-- Business plans
+`docs/screenshots/mobile/`
+
+| Screen | File |
+| --- | --- |
+| Homepage hero + search | `01-homepage-hero-search.png` |
+| Search results with filters | `02-search-results-filters.png` |
+| Listing detail | `03-listing-detail.png` |
+| Compare view | `04-compare-view.png` |
+| Quote-request demo | `05-quote-request-demo.png` |
+| Business plans | `06-business-plans.png` |
+
+Regenerate with `npm run screenshots:mobile` against a local preview or the live demo. Add matching desktop captures after deployment authorization if the case study layout needs both breakpoints.
 
 ### Live demo link
 https://localprodirectory.chexustudio.com

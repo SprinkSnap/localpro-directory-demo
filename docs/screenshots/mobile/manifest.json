@@ -1,0 +1,84 @@
+{
+  "generatedAt": "2026-08-03T17:43:26.880Z",
+  "baseUrl": "http://127.0.0.1:4321",
+  "device": "iPhone 14 Pro",
+  "viewport": {
+    "width": 393,
+    "height": 852
+  },
+  "deviceScaleFactor": 3,
+  "shots": [
+    {
+      "id": "01-homepage-hero-search",
+      "title": "Homepage hero + search",
+      "path": "/",
+      "file": "docs/screenshots/mobile/01-homepage-hero-search.png",
+      "viewport": {
+        "width": 393,
+        "height": 852
+      },
+      "deviceScaleFactor": 3,
+      "recommendation": true
+    },
+    {
+      "id": "02-search-results-filters",
+      "title": "Search results with filters",
+      "path": "/search/?category=home-cleaning&area=central-district",
+      "file": "docs/screenshots/mobile/02-search-results-filters.png",
+      "viewport": {
+        "width": 393,
+        "height": 852
+      },
+      "deviceScaleFactor": 3,
+      "recommendation": true
+    },
+    {
+      "id": "03-listing-detail",
+      "title": "Listing detail",
+      "path": "/professionals/beacon-home-co/",
+      "file": "docs/screenshots/mobile/03-listing-detail.png",
+      "viewport": {
+        "width": 393,
+        "height": 852
+      },
+      "deviceScaleFactor": 3,
+      "recommendation": true
+    },
+    {
+      "id": "04-compare-view",
+      "title": "Compare view",
+      "path": "/compare/",
+      "file": "docs/screenshots/mobile/04-compare-view.png",
+      "viewport": {
+        "width": 393,
+        "height": 852
+      },
+      "deviceScaleFactor": 3,
+      "recommendation": true
+    },
+    {
+      "id": "05-quote-request-demo",
+      "title": "Quote-request demo",
+      "path": "/request-quotes/",
+      "file": "docs/screenshots/mobile/05-quote-request-demo.png",
+      "viewport": {
+        "width": 393,
+        "height": 852
+      },
+      "deviceScaleFactor": 3,
+      "recommendation": true
+    },
+    {
+      "id": "06-business-plans",
+      "title": "Business plans",
+      "path": "/for-business/plans/",
+      "file": "docs/screenshots/mobile/06-business-plans.png",
+      "viewport": {
+        "width": 393,
+        "height": 852
+      },
+      "deviceScaleFactor": 3,
+      "recommendation": true
+    }
+  ]
+}
