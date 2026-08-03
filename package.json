@@ -25,7 +25,9 @@
     "deploy:staging": "wrangler deploy -c wrangler.staging.toml",
     "wrangler:dry-run": "wrangler deploy --dry-run --outdir=.wrangler-dry-run",
     "loadtest:local": "tsx scripts/load-test.ts",
-    "screenshots:mobile": "node scripts/capture-mobile-screenshots.mjs"
+    "screenshots": "node scripts/capture-screenshots.mjs",
+    "screenshots:mobile": "node scripts/capture-screenshots.mjs --device=mobile",
+    "screenshots:desktop": "node scripts/capture-screenshots.mjs --device=desktop"
   },
   "engines": {
     "node": ">=20"

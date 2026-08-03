@@ -87,20 +87,21 @@ Populate after running Lighthouse against the authorized preview/production depl
 Do not invent performance scores. Replace this section with measured results and dates.
 
 ### Screenshots
-Recommended mobile captures (iPhone 14 Pro, 393×852 @3x) live in the repo:
+Recommended case-study captures live in the repo at both breakpoints:
 
-`docs/screenshots/mobile/`
+| Screen | Mobile | Desktop |
+| --- | --- | --- |
+| Homepage hero + search | `docs/screenshots/mobile/01-homepage-hero-search.png` | `docs/screenshots/desktop/01-homepage-hero-search.png` |
+| Search results with filters | `docs/screenshots/mobile/02-search-results-filters.png` | `docs/screenshots/desktop/02-search-results-filters.png` |
+| Listing detail | `docs/screenshots/mobile/03-listing-detail.png` | `docs/screenshots/desktop/03-listing-detail.png` |
+| Compare view | `docs/screenshots/mobile/04-compare-view.png` | `docs/screenshots/desktop/04-compare-view.png` |
+| Quote-request demo | `docs/screenshots/mobile/05-quote-request-demo.png` | `docs/screenshots/desktop/05-quote-request-demo.png` |
+| Business plans | `docs/screenshots/mobile/06-business-plans.png` | `docs/screenshots/desktop/06-business-plans.png` |
 
-| Screen | File |
-| --- | --- |
-| Homepage hero + search | `01-homepage-hero-search.png` |
-| Search results with filters | `02-search-results-filters.png` |
-| Listing detail | `03-listing-detail.png` |
-| Compare view | `04-compare-view.png` |
-| Quote-request demo | `05-quote-request-demo.png` |
-| Business plans | `06-business-plans.png` |
+- Mobile: iPhone 14 Pro (393×852 @3x)
+- Desktop: 1440×900 @2x
 
-Regenerate with `npm run screenshots:mobile` against a local preview or the live demo. Add matching desktop captures after deployment authorization if the case study layout needs both breakpoints.
+Regenerate with `npm run screenshots:mobile`, `npm run screenshots:desktop`, or `npm run screenshots` against a local preview or the live demo.
 
 ### Live demo link
 https://localprodirectory.chexustudio.com

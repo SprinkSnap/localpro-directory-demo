@@ -36,7 +36,7 @@
 - Optional Rate Limiting rule IDs
 - Che Xu Studio enquiry notification email/CRM destination
 - Final package URL confirmation
-- Screenshot assets for the case study page on chexustudio.com (`docs/screenshots/mobile/`)
+- Screenshot assets for the case study page on chexustudio.com (`docs/screenshots/mobile/`, `docs/screenshots/desktop/`)
 - Authorization to deploy production and attach custom domain
 
 ## Launch blockers (must be resolved by owner)
