@@ -1,0 +1,85 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+export const prerender = true;
+
+const commitments = [
+  "Semantic HTML structure with landmarks, headings and descriptive link text",
+  "Keyboard-accessible navigation, buttons, forms and modal/drawer interactions",
+  "Visible focus indicators that meet WCAG 2.2 focus appearance guidance",
+  "Colour contrast targets aligned with WCAG 2.2 AA for text and UI components",
+  "Screen-reader announcements for dynamic search, save and enquiry interactions",
+  "Respect for prefers-reduced-motion in animations and transitions",
+  "Skip link to main content and logical focus order on all pages",
+];
+
+const knownLimits = [
+  "Third-party widgets (e.g. Cloudflare Turnstile) follow their own accessibility profiles",
+  "Some demonstration flows are intentionally simplified and may not reflect full production QA",
+  "Automated accessibility testing is used during development but does not replace manual review",
+];
+---
+
+<BaseLayout
+  title="Accessibility Statement"
+  description="Accessibility statement for the LocalPro Directory portfolio demo, outlining WCAG 2.2 AA intent and known limitations."
+  path="/accessibility/"
+>
+  <section class="surface-hero border-b border-navy/10">
+    <div class="container-page py-12 md:py-16">
+      <p class="eyebrow">Accessibility</p>
+      <h1 class="mt-3 max-w-3xl font-display text-display-md text-navy md:text-display-lg">
+        Accessibility statement
+      </h1>
+      <p class="prose-demo mt-5 text-lg">
+        Che Xu Studio intends for the LocalPro Directory demonstration to conform with the Web Content Accessibility Guidelines (WCAG) 2.2 at Level AA where reasonably achievable for a portfolio concept site.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-page max-w-3xl">
+      <h2 class="font-display text-display-sm text-navy">Design and development commitments</h2>
+      <ul class="mt-6 space-y-3">
+        {
+          commitments.map((item) => (
+            <li class="flex gap-3 text-sm text-muted">
+              <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-teal" aria-hidden="true" />
+              {item}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-page max-w-3xl">
+      <h2 class="font-display text-display-sm text-navy">Known limitations</h2>
+      <ul class="mt-6 space-y-3">
+        {
+          knownLimits.map((item) => (
+            <li class="text-sm text-muted">{item}</li>
+          ))
+        }
+      </ul>
+      <p class="prose-demo mt-6">
+        This is a fictional demonstration site. A production directory built for a client would include ongoing accessibility testing, user feedback channels and remediation processes appropriate to its scale and audience.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-page text-center">
+      <h2 class="font-display text-display-sm text-navy md:text-display-md">
+        Feedback on accessibility
+      </h2>
+      <p class="prose-demo mx-auto mt-4">
+        If you encounter an accessibility barrier on this demo, please contact Che Xu Studio through the enquiry form.
+      </p>
+      <button type="button" class="btn-primary mt-8" data-open-enquiry>
+        Report an Accessibility Issue
+      </button>
+    </div>
+  </section>
+</BaseLayout>

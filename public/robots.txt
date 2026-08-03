@@ -1,0 +1,6 @@
+# LocalPro Directory is a fictional portfolio demonstration.
+# DEMO_MODE keeps the site noindex; robots.txt reinforces that intent.
+User-agent: *
+Disallow: /
+
+Sitemap: https://localprodirectory.chexustudio.com/sitemap-index.xml

@@ -1,0 +1,101 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+export const prerender = true;
+
+const steps = [
+  {
+    title: "Search by service and area",
+    body: "Start with a category, keyword or popular service, then narrow results by fictional district, business type and profile signals. Search runs server-side with URL state so results are shareable and crawlable.",
+    links: [
+      { href: "/search/", label: "Try search demo" },
+      { href: "/categories/", label: "Browse categories" },
+    ],
+  },
+  {
+    title: "Compare up to three profiles",
+    body: "Save listings locally and compare side by side on criteria that are actually available—services, areas, business type and profile completeness. No fake ratings, reviews or verification badges.",
+    links: [
+      { href: "/compare/", label: "Open comparison tool" },
+      { href: "/saved/", label: "View saved list" },
+    ],
+  },
+  {
+    title: "Walk through a quote request",
+    body: "The multistep quote-request demonstration shows how a real platform could collect project details and route enquiries—without transmitting any real request or contacting fictional providers.",
+    links: [
+      { href: "/request-quotes/", label: "Start quote-request demo" },
+    ],
+  },
+  {
+    title: "Explore the business experience",
+    body: "Business owners can see how profiles, portfolio images, service menus, analytics and featured-placement architecture might work—including illustrative plans and listing submission flows.",
+    links: [
+      { href: "/for-business/", label: "Business overview" },
+      { href: "/submit-listing/", label: "Submit listing demo" },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="How LocalPro Directory Works"
+  description="Learn how the fictional LocalPro Directory demo guides visitors from search and comparison through quote requests and business listing flows."
+  path="/how-it-works/"
+>
+  <section class="surface-hero border-b border-navy/10">
+    <div class="container-page py-12 md:py-16">
+      <p class="eyebrow">How it works</p>
+      <h1 class="mt-3 max-w-3xl font-display text-display-md text-navy md:text-display-lg">
+        A clear path from search to next step
+      </h1>
+      <p class="prose-demo mt-5 text-lg">
+        LocalPro Directory is a fictional local-services discovery concept. These four flows show how a real platform could help people find professionals and take the next step—without real providers, ratings or transmitted enquiries.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-page">
+      <ol class="grid gap-6 md:grid-cols-2">
+        {
+          steps.map((step, index) => (
+            <li class="card-interactive h-full">
+              <p class="tabular text-sm font-bold text-search">Step {index + 1}</p>
+              <h2 class="mt-3 font-display text-xl font-semibold text-navy">{step.title}</h2>
+              <p class="mt-3 text-sm leading-relaxed text-muted">{step.body}</p>
+              <div class="mt-5 flex flex-wrap gap-3">
+                {step.links.map((link) => (
+                  <a href={link.href} class="btn-secondary text-xs sm:text-sm">
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+      <p class="mt-8 text-xs text-muted">
+        Portfolio concept by Che Xu Studio. All businesses, service areas and platform interactions are fictional demonstration data.
+      </p>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-page text-center">
+      <p class="eyebrow">Build something like this</p>
+      <h2 class="mt-2 font-display text-display-sm text-navy md:text-display-md">
+        Want a directory or marketplace platform?
+      </h2>
+      <p class="prose-demo mx-auto mt-4">
+        Che Xu Studio designs and builds fast, scalable discovery platforms with responsible SEO and conversion-focused listing experiences.
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <button type="button" class="btn-primary" data-open-enquiry>
+          Request My Platform Plan
+        </button>
+        <a href="/for-business/" class="btn-secondary">Explore business flows</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

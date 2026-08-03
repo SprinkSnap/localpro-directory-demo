@@ -1,0 +1,70 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getPublicEnv, SITE } from "@/lib/config";
+
+export const prerender = true;
+
+const env = getPublicEnv();
+---
+
+<BaseLayout
+  title="Contact Che Xu Studio"
+  description="Contact Che Xu Studio about directory and marketplace platform work. This page is for portfolio enquiries—not for reaching fictional LocalPro Directory providers."
+  path="/contact/"
+>
+  <section class="surface-hero border-b border-navy/10">
+    <div class="container-page py-12 md:py-16">
+      <p class="eyebrow">Contact</p>
+      <h1 class="mt-3 max-w-3xl font-display text-display-md text-navy md:text-display-lg">
+        Contact Che Xu Studio
+      </h1>
+      <p class="prose-demo mt-5 text-lg">
+        Questions about building a directory or marketplace like {SITE.name}? Reach out to Che Xu Studio. This contact path is for portfolio and platform enquiries only—not for contacting fictional providers listed in the demo.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-page grid gap-8 lg:grid-cols-2">
+      <div class="card-interactive">
+        <h2 class="font-display text-xl font-semibold text-navy">Open the enquiry drawer</h2>
+        <p class="mt-3 text-sm text-muted">
+          Use the portfolio enquiry form to share your platform goals, timeline and feature needs. Submissions go to Che Xu Studio for follow-up—not to any fictional business in this demonstration.
+        </p>
+        <button type="button" class="btn-primary mt-6" data-open-enquiry>
+          Open Enquiry Form
+        </button>
+      </div>
+
+      <div class="card-interactive">
+        <h2 class="font-display text-xl font-semibold text-navy">Learn more first</h2>
+        <p class="mt-3 text-sm text-muted">
+          Explore packages, pricing context and the case study behind this portfolio concept before getting in touch.
+        </p>
+        <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <a href={env.packagesUrl} class="btn-secondary" target="_blank" rel="noopener noreferrer">
+            View packages
+          </a>
+          <a href={env.caseStudyUrl} class="btn-secondary" target="_blank" rel="noopener noreferrer">
+            Read case study
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-page mt-10 max-w-3xl">
+      <div class="rounded-xl border border-amber/40 bg-amber-light px-5 py-4">
+        <h2 class="font-semibold text-navy">Not for provider contact</h2>
+        <p class="mt-2 text-sm text-charcoal">
+          {SITE.name} uses fictional businesses. Quote requests, listing submissions and claim forms in this demo do not contact real providers. If you are looking for local services, this is not a live directory.
+        </p>
+      </div>
+      <p class="mt-6 text-sm text-muted">
+        Studio website:{" "}
+        <a href={env.studioUrl} class="font-semibold text-search hover:underline" target="_blank" rel="noopener noreferrer">
+          chexustudio.com
+        </a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>

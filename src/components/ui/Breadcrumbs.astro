@@ -1,0 +1,40 @@
+---
+import { breadcrumbJsonLd } from "@/lib/seo";
+import { getPublicEnv } from "@/lib/config";
+
+interface Crumb {
+  name: string;
+  path?: string;
+}
+interface Props {
+  items: Crumb[];
+}
+const { items } = Astro.props;
+const { siteUrl } = getPublicEnv();
+const jsonLd = breadcrumbJsonLd(
+  items.filter((i) => i.path).map((i) => ({ name: i.name, path: i.path! })),
+  siteUrl,
+);
+---
+
+<nav aria-label="Breadcrumb" class="mb-6">
+  <ol class="flex flex-wrap items-center gap-2 text-sm text-muted">
+    {
+      items.map((item, index) => (
+        <li class="inline-flex items-center gap-2">
+          {index > 0 && <span aria-hidden="true" class="text-navy/30">/</span>}
+          {item.path && index < items.length - 1 ? (
+            <a href={item.path} class="font-medium text-navy hover:text-search">
+              {item.name}
+            </a>
+          ) : (
+            <span class="font-medium text-charcoal" aria-current={index === items.length - 1 ? "page" : undefined}>
+              {item.name}
+            </span>
+          )}
+        </li>
+      ))
+    }
+  </ol>
+</nav>
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

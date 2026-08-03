@@ -1,0 +1,164 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Breadcrumbs from "@/components/ui/Breadcrumbs.astro";
+import { LISTING_PLANS, formatCad, annualSavings } from "@/lib/plans";
+
+export const prerender = true;
+
+const billing = Astro.url.searchParams.get("billing") === "annual" ? "annual" : "monthly";
+const isAnnual = billing === "annual";
+---
+
+<BaseLayout
+  title="Illustrative Listing Plans"
+  description="Compare fictional Basic, Professional and Featured listing plans for the LocalPro Directory demo—monthly and annual pricing in CAD."
+  path="/for-business/plans/"
+>
+  <section class="surface-hero border-b border-navy/10">
+    <div class="container-page py-12 md:py-16">
+      <Breadcrumbs
+        items={[
+          { name: "Home", path: "/" },
+          { name: "For businesses", path: "/for-business/" },
+          { name: "Plans" },
+        ]}
+      />
+      <p class="eyebrow">Illustrative plans</p>
+      <h1 class="mt-3 max-w-3xl font-display text-display-md text-navy md:text-display-lg">
+        Fictional listing plans for demonstration
+      </h1>
+      <p class="prose-demo mt-5 text-lg">
+        These tiers show how a real local-services directory might structure provider plans—with portfolio limits, analytics and featured-placement options.
+      </p>
+      <p class="mt-4 rounded-lg border border-amber/40 bg-amber-light px-4 py-3 text-sm text-charcoal">
+        <strong class="font-semibold">Disclosure:</strong> Illustrative plans for a fictional directory. No purchase or subscription is available.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-page">
+      <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <p class="text-sm font-semibold text-navy">Billing period</p>
+        <div class="inline-flex rounded-lg border border-navy/10 bg-white p-1" role="group" aria-label="Billing period">
+          <a
+            href="/for-business/plans/"
+            class:list={[
+              "rounded-md px-4 py-2 text-sm font-semibold transition",
+              !isAnnual ? "bg-search text-white" : "text-navy hover:bg-cloud",
+            ]}
+            aria-current={!isAnnual ? "page" : undefined}
+          >
+            Monthly
+          </a>
+          <a
+            href="/for-business/plans/?billing=annual"
+            class:list={[
+              "rounded-md px-4 py-2 text-sm font-semibold transition",
+              isAnnual ? "bg-search text-white" : "text-navy hover:bg-cloud",
+            ]}
+            aria-current={isAnnual ? "page" : undefined}
+          >
+            Annual
+          </a>
+        </div>
+      </div>
+
+      <ul class="mt-8 grid gap-6 lg:grid-cols-3">
+        {
+          LISTING_PLANS.map((plan) => {
+            const price = isAnnual ? plan.annualCad : plan.monthlyCad;
+            const period = isAnnual ? "year" : "month";
+            const savings = annualSavings(plan);
+            return (
+              <li
+                class:list={[
+                  "card-interactive flex h-full flex-col",
+                  plan.highlighted && "ring-2 ring-search/30",
+                ]}
+              >
+                {plan.highlighted && (
+                  <p class="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-search">
+                    Most popular (demo)
+                  </p>
+                )}
+                <h2 class="font-display text-2xl font-bold text-navy">{plan.name}</h2>
+                <p class="mt-2 text-sm text-muted">{plan.tagline}</p>
+                <p class="mt-6">
+                  <span class="font-display text-4xl font-bold tabular text-navy">{formatCad(price)}</span>
+                  <span class="text-sm text-muted"> / {period}</span>
+                </p>
+                {isAnnual && savings > 0 && (
+                  <p class="mt-2 text-xs font-semibold text-success">
+                    Save {formatCad(savings)} vs monthly billing (illustrative)
+                  </p>
+                )}
+                <ul class="mt-6 flex-1 space-y-2 text-sm text-muted">
+                  {plan.features.map((feature) => (
+                    <li class="flex gap-2">
+                      <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-teal" aria-hidden="true" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+                <p class="mt-4 text-xs text-muted">
+                  Portfolio limit: {plan.portfolioLimit} images · Analytics: {plan.analytics ? "Yes (demo)" : "No"} ·
+                  Sponsored placement: {plan.sponsoredPlacement ? "Yes (demo)" : "No"}
+                </p>
+                <a href="/submit-listing/" class="btn-secondary mt-6 w-full">
+                  Try listing demo
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+
+      <div class="mt-10 grid gap-6 lg:grid-cols-2">
+        <div class="rounded-xl border border-navy/10 bg-cloud p-6">
+          <h2 class="font-display text-lg font-semibold text-navy">Monthly vs annual columns</h2>
+          <p class="mt-2 text-sm text-muted">
+            For quick reference, both billing periods are shown side by side below. Prices are fictional and for layout demonstration only.
+          </p>
+        </div>
+        <div class="overflow-x-auto rounded-xl border border-navy/10 bg-white">
+          <table class="w-full min-w-[28rem] text-left text-sm">
+            <caption class="sr-only">Plan pricing comparison</caption>
+            <thead>
+              <tr class="border-b border-navy/10 bg-cloud">
+                <th scope="col" class="px-4 py-3 font-semibold text-navy">Plan</th>
+                <th scope="col" class="px-4 py-3 font-semibold text-navy">Monthly</th>
+                <th scope="col" class="px-4 py-3 font-semibold text-navy">Annual</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                LISTING_PLANS.map((plan) => (
+                  <tr class="border-b border-navy/10 last:border-0">
+                    <th scope="row" class="px-4 py-3 font-medium text-navy">{plan.name}</th>
+                    <td class="px-4 py-3 tabular text-muted">{formatCad(plan.monthlyCad)}/mo</td>
+                    <td class="px-4 py-3 tabular text-muted">{formatCad(plan.annualCad)}/yr</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-page text-center">
+      <h2 class="font-display text-display-sm text-navy md:text-display-md">
+        Need a real plan structure for your directory?
+      </h2>
+      <p class="prose-demo mx-auto mt-4">
+        Che Xu Studio can help design provider tiers, pricing pages and onboarding that fit your market and business model.
+      </p>
+      <button type="button" class="btn-primary mt-8" data-open-enquiry>
+        Discuss Platform Plans
+      </button>
+    </div>
+  </section>
+</BaseLayout>

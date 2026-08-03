@@ -1,0 +1,38 @@
+name = "localpro-directory-demo"
+main = "dist/_worker.js/index.js"
+compatibility_date = "2025-10-01"
+compatibility_flags = ["nodejs_compat"]
+
+[assets]
+directory = "dist"
+binding = "ASSETS"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "localpro-directory"
+database_id = "00000000-0000-0000-0000-000000000001"
+migrations_dir = "migrations"
+
+[vars]
+DEMO_MODE = "true"
+PUBLIC_SITE_URL = "https://localprodirectory.chexustudio.com"
+PUBLIC_STUDIO_URL = "https://chexustudio.com"
+PUBLIC_CASE_STUDY_URL = "https://chexustudio.com/work/localpro-directory"
+PUBLIC_PACKAGES_URL = "https://chexustudio.com/packages"
+PUBLIC_TURNSTILE_SITE_KEY = "1x00000000000000000000AA"
+ALLOWED_ORIGINS = "https://localprodirectory.chexustudio.com,http://localhost:4321,http://127.0.0.1:4321"
+
+# Staging configuration (deploy with: wrangler deploy -c wrangler.staging.toml)
+# Rate limiting and Turnstile secrets are set via wrangler secret / .dev.vars
+
+[env.staging]
+name = "localpro-directory-demo-staging"
+
+[env.staging.vars]
+DEMO_MODE = "true"
+PUBLIC_SITE_URL = "https://localpro-directory-demo-staging.workers.dev"
+PUBLIC_STUDIO_URL = "https://chexustudio.com"
+PUBLIC_CASE_STUDY_URL = "https://chexustudio.com/work/localpro-directory"
+PUBLIC_PACKAGES_URL = "https://chexustudio.com/packages"
+PUBLIC_TURNSTILE_SITE_KEY = "1x00000000000000000000AA"
+ALLOWED_ORIGINS = "https://localpro-directory-demo-staging.workers.dev,http://localhost:4321"

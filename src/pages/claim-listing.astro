@@ -1,0 +1,125 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+export const prerender = true;
+---
+
+<BaseLayout
+  title="Claim Listing Demo"
+  description="Demonstration of a business claim-listing flow for the fictional LocalPro Directory—no real data is submitted or verified."
+  path="/claim-listing/"
+  noindex={true}
+>
+  <section class="surface-hero border-b border-navy/10">
+    <div class="container-page py-12 md:py-16">
+      <p class="eyebrow">Claim listing demo</p>
+      <h1 class="mt-3 max-w-3xl font-display text-display-md text-navy md:text-display-lg">
+        Claim a fictional listing
+      </h1>
+      <p class="prose-demo mt-5 text-lg">
+        This page demonstrates how a business might claim an existing directory profile. No verification, ownership check or real submission occurs—this is a portfolio concept only.
+      </p>
+      <p class="mt-4 rounded-lg border border-amber/40 bg-amber-light px-4 py-3 text-sm text-charcoal">
+        <strong class="font-semibold">Demo only:</strong> Form data is not transmitted. You will see a client-side completion message when you submit.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-page grid gap-10 lg:grid-cols-2">
+      <div>
+        <h2 class="font-display text-display-sm text-navy">How claiming would work</h2>
+        <ol class="mt-6 space-y-4">
+          {
+            [
+              "Search for your business or select a listing from the directory.",
+              "Verify ownership through email, phone or document checks (not implemented in demo).",
+              "Review and update profile details, services and portfolio images.",
+              "Choose an illustrative plan tier and publish when moderation approves (demo only).",
+            ].map((step, index) => (
+              <li class="flex gap-4 text-sm text-muted">
+                <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-search-light font-bold tabular text-search">
+                  {index + 1}
+                </span>
+                {step}
+              </li>
+            ))
+          }
+        </ol>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="/submit-listing/" class="btn-secondary">Submit new listing instead</a>
+          <a href="/search/" class="btn-ghost">Browse listings</a>
+        </div>
+      </div>
+
+      <div class="card-interactive">
+        <h2 class="font-display text-lg font-semibold text-navy">Short claim demo form</h2>
+        <p class="mt-2 text-sm text-muted">
+          Fill in the fields below to see a completion state. Nothing is sent to a server.
+        </p>
+
+        <form id="claim-demo-form" class="mt-6 space-y-4" novalidate>
+          <div>
+            <label for="claim-business" class="label">Business name</label>
+            <input id="claim-business" name="business" type="text" class="input" placeholder="e.g. North Shore Plumbing Co." required />
+          </div>
+          <div>
+            <label for="claim-listing-url" class="label">Listing URL or ID</label>
+            <input id="claim-listing-url" name="listingUrl" type="text" class="input" placeholder="e.g. /providers/north-shore-plumbing/" required />
+            <p class="help">Use any fictional listing path from the demo.</p>
+          </div>
+          <div>
+            <label for="claim-email" class="label">Work email</label>
+            <input id="claim-email" name="email" type="email" class="input" placeholder="you@example.com" required />
+          </div>
+          <div>
+            <label for="claim-role" class="label">Your role</label>
+            <select id="claim-role" name="role" class="input" required>
+              <option value="">Select a role</option>
+              <option value="owner">Owner</option>
+              <option value="manager">Manager</option>
+              <option value="marketing">Marketing</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <button type="submit" class="btn-primary w-full">Complete claim demo</button>
+        </form>
+
+        <div id="claim-demo-success" class="mt-6 hidden rounded-lg border border-success/30 bg-teal-light p-5" role="status" tabindex="-1">
+          <p class="font-semibold text-navy">Demo complete</p>
+          <p class="mt-2 text-sm text-muted">
+            In a production platform, your claim would enter a verification queue. Here, no data was submitted and no listing was updated.
+          </p>
+          <a href="/for-business/plans/" class="btn-secondary mt-4">View illustrative plans</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-page text-center">
+      <h2 class="font-display text-display-sm text-navy md:text-display-md">
+        Need claim and onboarding flows for your directory?
+      </h2>
+      <button type="button" class="btn-accent mt-6" data-open-enquiry>
+        Discuss Provider Onboarding
+      </button>
+    </div>
+  </section>
+
+  <script>
+    const form = document.getElementById("claim-demo-form") as HTMLFormElement | null;
+    const success = document.getElementById("claim-demo-success");
+
+    form?.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      form.classList.add("hidden");
+      success?.classList.remove("hidden");
+      success?.focus();
+    });
+  </script>
+</BaseLayout>

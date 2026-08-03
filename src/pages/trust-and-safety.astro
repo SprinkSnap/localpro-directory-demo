@@ -1,0 +1,115 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+export const prerender = true;
+
+const claimed = [
+  "All listings are clearly labelled as fictional concept profiles",
+  "Sponsored and featured placements are disclosed as demonstration placements",
+  "Quote-request and enquiry flows state that no real request is transmitted",
+  "No ratings, reviews, verification badges or popularity scores are shown",
+  "Search and comparison use only data fields that exist on each profile",
+];
+
+const notClaimed = [
+  "Provider identity, licensing, insurance or background verification",
+  "Quality guarantees, endorsements or recommendations",
+  "Real-time availability, pricing accuracy or service outcomes",
+  "Dispute resolution, refunds or consumer protection processes",
+  "Moderation of user-generated content (none exists in this demo)",
+];
+
+const futureModeration = [
+  "Report-and-review queue for listing accuracy concerns",
+  "Automated and human review for new provider submissions",
+  "Clear escalation paths for misleading or harmful content",
+  "Audit logs and transparency reports for enforcement actions",
+];
+---
+
+<BaseLayout
+  title="Trust and Safety"
+  description="What the fictional LocalPro Directory demo does and does not claim about providers, plus illustrative future moderation architecture not active in this demonstration."
+  path="/trust-and-safety/"
+>
+  <section class="surface-hero border-b border-navy/10">
+    <div class="container-page py-12 md:py-16">
+      <p class="eyebrow">Trust and safety</p>
+      <h1 class="mt-3 max-w-3xl font-display text-display-md text-navy md:text-display-lg">
+        Transparent about what this demo is—and is not
+      </h1>
+      <p class="prose-demo mt-5 text-lg">
+        LocalPro Directory is a fictional portfolio concept. This page explains the disclosures built into the demonstration and outlines moderation architecture that a production platform might include—but that is not active in this demo.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-page grid gap-8 lg:grid-cols-2">
+      <div>
+        <h2 class="font-display text-display-sm text-navy">What this demo discloses</h2>
+        <ul class="mt-6 space-y-3">
+          {
+            claimed.map((item) => (
+              <li class="flex gap-3 text-sm text-muted">
+                <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-success" aria-hidden="true" />
+                {item}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div>
+        <h2 class="font-display text-display-sm text-navy">What is not claimed</h2>
+        <ul class="mt-6 space-y-3">
+          {
+            notClaimed.map((item) => (
+              <li class="flex gap-3 text-sm text-muted">
+                <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-amber" aria-hidden="true" />
+                {item}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-page max-w-3xl">
+      <p class="eyebrow">Future architecture</p>
+      <h2 class="mt-2 font-display text-display-sm text-navy md:text-display-md">
+        Moderation design—not active in demo
+      </h2>
+      <p class="prose-demo mt-4">
+        A production directory would need trust and safety systems appropriate to its market and legal context. The following illustrates possible components. None are implemented or operational in this portfolio demonstration.
+      </p>
+      <ul class="mt-8 space-y-3">
+        {
+          futureModeration.map((item) => (
+            <li class="rounded-lg border border-dashed border-navy/20 bg-cloud px-4 py-3 text-sm text-muted">
+              {item}
+            </li>
+          ))
+        }
+      </ul>
+      <p class="mt-6 text-xs text-muted">
+        Status: not active in demo. Shown for architectural discussion purposes only.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-page text-center">
+      <h2 class="font-display text-display-sm text-navy md:text-display-md">
+        Building trust into a real directory?
+      </h2>
+      <p class="prose-demo mx-auto mt-4">
+        Che Xu Studio can help design disclosure patterns, moderation workflows and responsible SEO that match your platform's scope.
+      </p>
+      <button type="button" class="btn-primary mt-8" data-open-enquiry>
+        Discuss Trust Architecture
+      </button>
+    </div>
+  </section>
+</BaseLayout>

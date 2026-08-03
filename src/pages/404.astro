@@ -1,0 +1,61 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+export const prerender = true;
+
+const helpfulLinks = [
+  { href: "/", label: "Home" },
+  { href: "/search/", label: "Search demo" },
+  { href: "/categories/", label: "Categories" },
+  { href: "/how-it-works/", label: "How it works" },
+  { href: "/for-business/", label: "For businesses" },
+  { href: "/about/", label: "About" },
+  { href: "/contact/", label: "Contact Che Xu Studio" },
+];
+---
+
+<BaseLayout
+  title="Page Not Found"
+  description="The page you requested does not exist on the LocalPro Directory portfolio demonstration."
+  path="/404/"
+  noindex={true}
+>
+  <section class="section">
+    <div class="container-page max-w-2xl text-center">
+      <p class="eyebrow">404</p>
+      <h1 class="mt-3 font-display text-display-md text-navy md:text-display-lg">
+        This page could not be found
+      </h1>
+      <p class="prose-demo mx-auto mt-5">
+        The URL may be incorrect, or the page may have moved. LocalPro Directory is a fictional portfolio demonstration—all listings and areas are concept data.
+      </p>
+
+      <div class="mt-10">
+        <a href="/search/" class="btn-primary">Search the demo</a>
+        <a href="/" class="btn-secondary mt-3 sm:ml-3 sm:mt-0">Back to home</a>
+      </div>
+
+      <nav class="mt-12 text-left" aria-label="Helpful links">
+        <h2 class="text-sm font-semibold text-navy">Helpful links</h2>
+        <ul class="mt-4 grid gap-2 sm:grid-cols-2">
+          {
+            helpfulLinks.map((link) => (
+              <li>
+                <a href={link.href} class="card-interactive block text-sm font-semibold text-search">
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <p class="mt-10 text-xs text-muted">
+        Looking to build a directory platform?{" "}
+        <button type="button" class="font-semibold text-search hover:underline" data-open-enquiry>
+          Open the enquiry form
+        </button>
+      </p>
+    </div>
+  </section>
+</BaseLayout>

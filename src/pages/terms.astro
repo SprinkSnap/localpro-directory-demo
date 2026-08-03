@@ -1,0 +1,83 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { SITE } from "@/lib/config";
+
+export const prerender = true;
+---
+
+<BaseLayout
+  title="Terms of Use"
+  description="Terms of use for the fictional LocalPro Directory portfolio demonstration by Che Xu Studio."
+  path="/terms/"
+>
+  <section class="surface-hero border-b border-navy/10">
+    <div class="container-page py-12 md:py-16">
+      <p class="eyebrow">Terms</p>
+      <h1 class="mt-3 max-w-3xl font-display text-display-md text-navy md:text-display-lg">
+        Terms of use
+      </h1>
+      <p class="prose-demo mt-5 text-lg">
+        By using {SITE.name}, you agree to these terms for the portfolio demonstration. If you do not agree, please do not use the site.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-page max-w-3xl space-y-10">
+      <article>
+        <h2 class="font-display text-xl font-semibold text-navy">Fictional demonstration</h2>
+        <p class="prose-demo mt-3">
+          {SITE.name} is a portfolio concept by Che Xu Studio. All businesses, listings, service areas, plans, analytics and platform interactions are fictional. The site is provided for demonstration and evaluation purposes only—not as a live marketplace or directory service.
+        </p>
+      </article>
+
+      <article>
+        <h2 class="font-display text-xl font-semibold text-navy">No professional advice or guarantees</h2>
+        <p class="prose-demo mt-3">
+          Nothing on this site constitutes professional, legal or financial advice. We do not verify providers, guarantee outcomes or endorse any fictional listing. Do not rely on this demonstration for hiring decisions or real-world service procurement.
+        </p>
+      </article>
+
+      <article>
+        <h2 class="font-display text-xl font-semibold text-navy">Demo interactions</h2>
+        <p class="prose-demo mt-3">
+          Quote requests, listing submissions, claim forms and plan selections in this demo do not create real accounts, listings or transactions. Only the Che Xu Studio portfolio enquiry form is intended for genuine contact with the studio.
+        </p>
+      </article>
+
+      <article>
+        <h2 class="font-display text-xl font-semibold text-navy">Intellectual property</h2>
+        <p class="prose-demo mt-3">
+          The design, code, copy and concept architecture of this demonstration are owned by Che Xu Studio unless otherwise noted. You may not reproduce or commercially exploit the demonstration without permission.
+        </p>
+      </article>
+
+      <article>
+        <h2 class="font-display text-xl font-semibold text-navy">Disclaimer of warranties</h2>
+        <p class="prose-demo mt-3">
+          The site is provided "as is" without warranties of any kind. Che Xu Studio disclaims liability for any damages arising from use of this demonstration, to the fullest extent permitted by law.
+        </p>
+      </article>
+
+      <article>
+        <h2 class="font-display text-xl font-semibold text-navy">Changes</h2>
+        <p class="prose-demo mt-3">
+          These terms may be updated as the portfolio demonstration evolves. Continued use after changes constitutes acceptance of the revised terms.
+        </p>
+      </article>
+
+      <p class="text-xs text-muted">
+        {SITE.conceptNotice}
+      </p>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-page text-center">
+      <p class="prose-demo mx-auto">Questions about these terms or the demonstration?</p>
+      <button type="button" class="btn-primary mt-6" data-open-enquiry>
+        Contact Che Xu Studio
+      </button>
+    </div>
+  </section>
+</BaseLayout>

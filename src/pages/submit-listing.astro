@@ -1,0 +1,44 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Breadcrumbs from "@/components/ui/Breadcrumbs.astro";
+import BusinessOnboardingDemo from "@/components/islands/BusinessOnboardingDemo";
+import { getDirectoryRepository } from "@/db/repository";
+import { getPublicEnv } from "@/lib/config";
+
+export const prerender = true;
+
+const repo = getDirectoryRepository();
+const categories = repo.listCategories().map((c) => ({ slug: c.slug, name: c.name }));
+const services = repo.listServices().map((s) => ({ slug: s.slug, name: s.name }));
+const areas = repo.listAreas().map((a) => ({ slug: a.slug, name: a.name }));
+const env = getPublicEnv();
+---
+
+<BaseLayout
+  title="Submit Listing Demonstration"
+  description="Interactive LocalPro Directory business onboarding demonstration. No account or listing is created."
+  path="/submit-listing/"
+  noindex={true}
+>
+  <section class="section pt-10">
+    <div class="container-page max-w-3xl">
+      <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Submit listing demo" }]} />
+      <p class="eyebrow">Business onboarding</p>
+      <h1 class="mt-2 font-display text-display-sm text-navy md:text-display-md">
+        Submit a listing demonstration
+      </h1>
+      <p class="prose-demo mt-3">
+        Explore category selection, services, areas, profile details, portfolio interface patterns and illustrative plan selection.
+      </p>
+      <div class="mt-8">
+        <BusinessOnboardingDemo
+          client:load
+          categories={categories}
+          services={services}
+          areas={areas}
+          caseStudyUrl={env.caseStudyUrl}
+        />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

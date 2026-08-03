@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="LocalPro Directory by Che Xu Studio">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#10243E"/>
+      <stop offset="55%" stop-color="#163456"/>
+      <stop offset="100%" stop-color="#13998F"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="980" cy="120" r="180" fill="#4F8CFF" opacity="0.18"/>
+  <circle cx="160" cy="520" r="220" fill="#246BFD" opacity="0.16"/>
+  <rect x="80" y="80" width="72" height="72" rx="18" fill="#FFFFFF"/>
+  <path d="M116 96c-9.3 0-16.5 7-16.5 15.9 0 11.1 13.6 23.5 15.7 25.3a1.2 1.2 0 0 0 1.5 0c2.1-1.8 15.8-14.2 15.8-25.3 0-8.9-7.2-15.9-16.5-15.9Z" fill="#4F8CFF"/>
+  <circle cx="116" cy="112" r="6.3" fill="#10243E"/>
+  <text x="180" y="128" fill="#FFFFFF" font-family="Arial,sans-serif" font-size="42" font-weight="700">LocalPro Directory</text>
+  <text x="80" y="260" fill="#FFFFFF" font-family="Arial,sans-serif" font-size="64" font-weight="700">Find the right local</text>
+  <text x="80" y="340" fill="#FFFFFF" font-family="Arial,sans-serif" font-size="64" font-weight="700">professional, faster.</text>
+  <text x="80" y="420" fill="#D7E6FF" font-family="Arial,sans-serif" font-size="28">Fictional directory platform concept by Che Xu Studio</text>
+  <rect x="80" y="480" width="320" height="56" rx="12" fill="#246BFD"/>
+  <text x="110" y="516" fill="#FFFFFF" font-family="Arial,sans-serif" font-size="24" font-weight="700">Portfolio demonstration</text>
+</svg>

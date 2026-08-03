@@ -1,0 +1,108 @@
+---
+interface Props {
+  name: string;
+  class?: string;
+}
+const { name, class: className = "h-6 w-6" } = Astro.props;
+const stroke = "currentColor";
+---
+
+<svg class={className} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+  {
+    name === "hvac" && (
+      <>
+        <path d="M12 3v18M4.5 7.5l15 9M4.5 16.5l15-9" stroke={stroke} stroke-width="1.75" stroke-linecap="round" />
+      </>
+    )
+  }
+  {
+    name === "plumbing" && (
+      <path d="M8 4h4a3 3 0 0 1 3 3v3h3a2 2 0 0 1 2 2v2M8 4v16m0-8h7" stroke={stroke} stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+    )
+  }
+  {
+    name === "electrical" && (
+      <path d="M13 2 6 13h5l-1 9 8-12h-5l0-8Z" stroke={stroke} stroke-width="1.75" stroke-linejoin="round" />
+    )
+  }
+  {
+    name === "cleaning" && (
+      <path d="M4 20h16M7 20V9l5-5 5 5v11M9.5 12h5" stroke={stroke} stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+    )
+  }
+  {
+    name === "landscaping" && (
+      <path d="M12 21V11M12 11c-4 0-7-2.5-7-6 3.5 0 7 2.5 7 6Zm0 0c4 0 7-2.5 7-6-3.5 0-7 2.5-7 6Z" stroke={stroke} stroke-width="1.75" stroke-linecap="round" />
+    )
+  }
+  {
+    name === "moving" && (
+      <path d="M3 17h13V7H3v10Zm13 0h3l3 3v-6h-6v3ZM7 20a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm9 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z" stroke={stroke} stroke-width="1.75" stroke-linejoin="round" />
+    )
+  }
+  {
+    name === "painting" && (
+      <path d="M5 4h10v6H5V4Zm10 3h3l1 3v5a2 2 0 0 1-2 2h-1M8 13v7" stroke={stroke} stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+    )
+  }
+  {
+    name === "flooring" && (
+      <path d="M3 8h18v10H3V8Zm0 5h18M9 8v10M15 8v10" stroke={stroke} stroke-width="1.75" stroke-linejoin="round" />
+    )
+  }
+  {
+    name === "appliance" && (
+      <path d="M6 4h12v16H6V4Zm0 5h12M10 16h4" stroke={stroke} stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+    )
+  }
+  {
+    name === "auto" && (
+      <path d="M4 15h16l-1.5-5.5A2 2 0 0 0 16.6 8H7.4a2 2 0 0 0-1.9 1.5L4 15Zm2 0v2m12-2v2M7.5 15a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm9 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z" stroke={stroke} stroke-width="1.75" stroke-linejoin="round" />
+    )
+  }
+  {
+    name === "pet" && (
+      <path d="M12 14c-2.5 0-5 1.5-5 3.5S10 20 12 20s5-.5 5-2.5S14.5 14 12 14Zm-5.5-5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm11 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM8 11.5a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4Zm8 0a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4Z" stroke={stroke} stroke-width="1.5" />
+    )
+  }
+  {
+    name === "photo" && (
+      <path d="M4 8h3l2-2h6l2 2h3v11H4V8Zm8 3.5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Z" stroke={stroke} stroke-width="1.75" stroke-linejoin="round" />
+    )
+  }
+  {
+    name === "it" && (
+      <path d="M4 6h16v10H4V6Zm4 14h8M12 16v4" stroke={stroke} stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+    )
+  }
+  {
+    name === "graphic" && (
+      <path d="M5 19 14 5l5 3-9 14H5v-3Zm9-14 3 5" stroke={stroke} stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+    )
+  }
+  {
+    name === "web" && (
+      <path d="M4 6h16v12H4V6Zm0 4h16M10 6c-2 3-2 7 0 12m4-12c2 3 2 7 0 12" stroke={stroke} stroke-width="1.75" stroke-linejoin="round" />
+    )
+  }
+  {
+    name === "event" && (
+      <path d="M12 4v3M7 8c0 4 2.5 6 5 9 2.5-3 5-5 5-9a5 5 0 0 0-10 0Zm-3 13h16" stroke={stroke} stroke-width="1.75" stroke-linecap="round" />
+    )
+  }
+  {
+    name === "organize" && (
+      <path d="M4 6h6v6H4V6Zm10 0h6v4h-6V6ZM4 14h6v6H4v-6Zm10 2h6v4h-6v-4Z" stroke={stroke} stroke-width="1.75" stroke-linejoin="round" />
+    )
+  }
+  {
+    name === "handyman" && (
+      <path d="M14.5 5.5a3.5 3.5 0 0 1 4 4L12 16l-3 1 1-3 6.5-8.5ZM5 19l4-1" stroke={stroke} stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+    )
+  }
+  {
+    !["hvac","plumbing","electrical","cleaning","landscaping","moving","painting","flooring","appliance","auto","pet","photo","it","graphic","web","event","organize","handyman"].includes(name) && (
+      <circle cx="12" cy="12" r="8" stroke={stroke} stroke-width="1.75" />
+    )
+  }
+</svg>

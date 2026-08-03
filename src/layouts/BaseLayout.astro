@@ -1,0 +1,159 @@
+---
+import "@/styles/global.css";
+import ConceptDisclosure from "@/components/ui/ConceptDisclosure.astro";
+import PortfolioBar from "@/components/islands/PortfolioBar";
+import SiteHeader from "@/components/islands/SiteHeader";
+import EnquiryDrawer from "@/components/islands/EnquiryDrawer";
+import AssistantWidget from "@/components/islands/AssistantWidget";
+import { SITE, getPublicEnv } from "@/lib/config";
+import { buildTitle, robotsContent, shouldNoIndex, absoluteUrl } from "@/lib/seo";
+
+interface Props {
+  title: string;
+  description: string;
+  path?: string;
+  noindex?: boolean;
+  ogImage?: string;
+  jsonLd?: Record<string, unknown> | Array<Record<string, unknown>>;
+}
+
+const {
+  title,
+  description,
+  path = Astro.url.pathname,
+  noindex,
+  ogImage = "/og-default.svg",
+  jsonLd,
+} = Astro.props;
+
+const env = getPublicEnv();
+const demoMode = Astro.locals.demoMode ?? env.demoMode;
+const robots = robotsContent(shouldNoIndex(demoMode, noindex));
+const pageTitle = buildTitle(title);
+const canonical = absoluteUrl(path, env.siteUrl);
+const ogImageUrl = ogImage.startsWith("http") ? ogImage : absoluteUrl(ogImage, env.siteUrl);
+const jsonLdItems = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+---
+
+<!doctype html>
+<html lang="en-CA">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={robots} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:locale" content="en_CA" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Outfit:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    {
+      jsonLdItems.map((item) => (
+        <script type="application/ld+json" set:html={JSON.stringify(item)} />
+      ))
+    }
+    <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  </head>
+  <body class="min-h-screen">
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <PortfolioBar client:load caseStudyUrl={env.caseStudyUrl} />
+    <ConceptDisclosure compact />
+    <SiteHeader client:load />
+    <main id="main">
+      <slot />
+    </main>
+    <footer class="mt-16 border-t border-navy/10 bg-white">
+      <div class="container-page grid gap-10 py-12 md:grid-cols-4">
+        <div class="md:col-span-1">
+          <p class="font-display text-xl font-bold text-navy">{SITE.name}</p>
+          <p class="mt-2 text-sm text-muted">{SITE.tagline}</p>
+          <p class="mt-4 text-xs leading-relaxed text-muted">{SITE.conceptNotice}</p>
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-navy">Explore</p>
+          <ul class="mt-3 space-y-2 text-sm text-muted">
+            <li><a class="hover:text-search" href="/search/">Search</a></li>
+            <li><a class="hover:text-search" href="/categories/">Categories</a></li>
+            <li><a class="hover:text-search" href="/areas/">Areas</a></li>
+            <li><a class="hover:text-search" href="/compare/">Compare</a></li>
+            <li><a class="hover:text-search" href="/saved/">Saved</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-navy">For businesses</p>
+          <ul class="mt-3 space-y-2 text-sm text-muted">
+            <li><a class="hover:text-search" href="/for-business/">Business overview</a></li>
+            <li><a class="hover:text-search" href="/for-business/plans/">Plans</a></li>
+            <li><a class="hover:text-search" href="/submit-listing/">Submit listing demo</a></li>
+            <li><a class="hover:text-search" href="/claim-listing/">Claim listing demo</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-navy">About this demo</p>
+          <ul class="mt-3 space-y-2 text-sm text-muted">
+            <li><a class="hover:text-search" href="/about/">About</a></li>
+            <li><a class="hover:text-search" href="/trust-and-safety/">Trust and safety</a></li>
+            <li><a class="hover:text-search" href="/resources/">Resources</a></li>
+            <li><a class="hover:text-search" href="/accessibility/">Accessibility</a></li>
+            <li><a class="hover:text-search" href="/privacy/">Privacy</a></li>
+            <li><a class="hover:text-search" href="/terms/">Terms</a></li>
+            <li><a class="hover:text-search" href="/contact/">Contact Che Xu Studio</a></li>
+            <li>
+              <a class="hover:text-search" href={env.caseStudyUrl} target="_blank" rel="noopener noreferrer">
+                Case study
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-navy/10">
+        <div class="container-page flex flex-col gap-3 py-5 text-xs text-muted md:flex-row md:items-center md:justify-between">
+          <p>© {new Date().getFullYear()} Che Xu Studio. LocalPro Directory is a fictional portfolio demonstration.</p>
+          <button
+            type="button"
+            class="btn-ghost min-h-10 self-start px-3 text-xs"
+            data-open-enquiry
+          >
+            Build a Directory Like This
+          </button>
+        </div>
+      </div>
+    </footer>
+    <EnquiryDrawer
+      client:idle
+      packagesUrl={env.packagesUrl}
+      turnstileSiteKey={env.turnstileSiteKey}
+    />
+    <AssistantWidget client:idle />
+    <script>
+      document.querySelectorAll("[data-open-enquiry]").forEach((el) => {
+        el.addEventListener("click", () => {
+          window.dispatchEvent(new CustomEvent("localpro:open-enquiry"));
+        });
+      });
+      if (!sessionStorage.getItem("localpro_demo_viewed")) {
+        sessionStorage.setItem("localpro_demo_viewed", "1");
+        window.dispatchEvent(
+          new CustomEvent("localpro:analytics", {
+            detail: { event: "demo_viewed" },
+          }),
+        );
+      }
+    </script>
+  </body>
+</html>

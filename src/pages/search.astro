@@ -1,0 +1,55 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SearchExperience from "@/components/islands/SearchExperience";
+import Breadcrumbs from "@/components/ui/Breadcrumbs.astro";
+import { getDirectoryRepository } from "@/db/repository";
+import { searchFiltersSchema } from "@/lib/validation";
+
+export const prerender = false;
+
+const repo = getDirectoryRepository();
+const raw = Object.fromEntries(Astro.url.searchParams.entries());
+const parsed = searchFiltersSchema.safeParse(raw);
+const filters = parsed.success ? parsed.data : {};
+const result = repo.search(filters);
+const categories = repo.listCategories().map((c) => ({ slug: c.slug, name: c.name }));
+const areas = repo.listAreas().map((a) => ({ slug: a.slug, name: a.name }));
+const services = repo.listServices().map((s) => ({ slug: s.slug, name: s.name }));
+const initialQuery: Record<string, string> = {};
+for (const [key, value] of Object.entries(raw)) {
+  if (typeof value === "string") initialQuery[key] = value;
+}
+---
+
+<BaseLayout
+  title="Search Local Professionals"
+  description="Search fictional LocalPro Directory professionals by service, category and area. Demonstration data only—no real providers."
+  path="/search/"
+  noindex={true}
+>
+  <section class="section pt-10">
+    <div class="container-page">
+      <Breadcrumbs items={[
+        { name: "Home", path: "/" },
+        { name: "Search" },
+      ]} />
+      <p class="eyebrow">Find a professional</p>
+      <h1 class="mt-2 font-display text-display-sm text-navy md:text-display-md">
+        Search local professionals
+      </h1>
+      <p class="prose-demo mt-3">
+        Server-side search with filters, sorting and pagination. Results are fictional demonstration listings.
+      </p>
+      <div class="mt-8">
+        <SearchExperience
+          client:load
+          initialResult={result}
+          categories={categories}
+          areas={areas}
+          services={services}
+          initialQuery={initialQuery}
+        />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

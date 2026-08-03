@@ -1,0 +1,96 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ProviderCard from "@/components/directory/ProviderCard.astro";
+import Breadcrumbs from "@/components/ui/Breadcrumbs.astro";
+import { getDirectoryRepository } from "@/db/repository";
+import { AREAS } from "@/data/areas";
+import { passesIndexQualityGate } from "@/lib/seo";
+import { getPublicEnv } from "@/lib/config";
+
+export const prerender = true;
+
+export function getStaticPaths() {
+  return AREAS.map((area) => ({
+    params: { area: area.slug },
+  }));
+}
+
+const repo = getDirectoryRepository();
+const slug = Astro.params.area!;
+const area = repo.getArea(slug);
+if (!area) return Astro.redirect("/404/");
+
+const result = repo.search({ area: slug, sort: "profile-completeness", limit: 12 });
+const categories = repo.listCategories().slice(0, 8);
+const env = getPublicEnv();
+const canIndex = passesIndexQualityGate(env.demoMode, {
+  introLength: area.longDescription.length,
+  providerCount: result.total,
+  hasUniqueLocalInfo: true,
+  hasRequiredMetadata: true,
+  areaOrCategoryVerified: false,
+});
+---
+
+<BaseLayout
+  title={`Professionals in ${area.name}`}
+  description={`${area.shortDescription} Explore fictional professionals serving ${area.name} in LocalPro Directory.`}
+  path={`/areas/${area.slug}/`}
+  noindex={!canIndex}
+>
+  <section class="section pt-10">
+    <div class="container-page">
+      <Breadcrumbs
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Areas", path: "/areas/" },
+          { name: area.name },
+        ]}
+      />
+      <p class="eyebrow">{area.districtGroup} district group</p>
+      <h1 class="mt-2 font-display text-display-sm text-navy md:text-display-md">{area.name}</h1>
+      <p class="prose-demo mt-4">{area.longDescription}</p>
+      <p class="mt-3 text-sm font-semibold text-navy">
+        <span class="tabular">{result.total}</span> sample listings
+        <span class="font-normal text-muted"> (demonstration data)</span>
+      </p>
+
+      <div class="mt-8">
+        <h2 class="font-display text-xl font-semibold text-navy">Popular categories in this area</h2>
+        <ul class="mt-3 flex flex-wrap gap-2">
+          {
+            categories.map((category) => (
+              <li>
+                <a
+                  href={`/search/?area=${area.slug}&category=${category.slug}`}
+                  class="rounded-md border border-navy/10 bg-white px-3 py-2 text-sm font-semibold text-navy hover:border-search/30"
+                >
+                  {category.name}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="mt-10">
+        <div class="flex flex-wrap items-end justify-between gap-3">
+          <h2 class="font-display text-xl font-semibold text-navy">Professionals serving this area</h2>
+          <a href={`/search/?area=${area.slug}`} class="btn-secondary">View all in search</a>
+        </div>
+        <ul class="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {result.items.map((provider) => (
+            <li><ProviderCard provider={provider} /></li>
+          ))}
+        </ul>
+      </div>
+
+      <aside class="mt-12 rounded-xl border border-amber/30 bg-amber-light p-5 text-sm text-charcoal">
+        <p>
+          <strong>No map coordinates are published for this fictional area.</strong>
+          {" "}A production directory could offer an accessible list alternative alongside any optional map visualization.
+        </p>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>

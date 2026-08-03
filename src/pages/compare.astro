@@ -1,0 +1,30 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Breadcrumbs from "@/components/ui/Breadcrumbs.astro";
+import CompareExperience from "@/components/islands/CompareExperience";
+
+export const prerender = true;
+---
+
+<BaseLayout
+  title="Compare Professionals"
+  description="Compare up to three fictional LocalPro Directory professionals side by side. No ratings or verification claims."
+  path="/compare/"
+  noindex={true}
+>
+  <section class="section pt-10">
+    <div class="container-page">
+      <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Compare" }]} />
+      <p class="eyebrow">Compare</p>
+      <h1 class="mt-2 font-display text-display-sm text-navy md:text-display-md">
+        Compare concept profiles
+      </h1>
+      <p class="prose-demo mt-3">
+        Compare categories, services, areas, business type, profile completeness, portfolio availability and demonstration response preference.
+      </p>
+      <div class="mt-8">
+        <CompareExperience client:load />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

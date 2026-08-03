@@ -1,0 +1,89 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getPublicEnv, SITE } from "@/lib/config";
+
+export const prerender = true;
+
+const env = getPublicEnv();
+
+const highlights = [
+  "Indexed search with URL state and server-side queries",
+  "Programmatic category, area and listing page generation",
+  "Side-by-side provider comparison without fake trust signals",
+  "Multistep quote-request and portfolio lead demonstrations",
+  "Business onboarding, plans and listing submission flows",
+  "Technical SEO, structured data and responsible indexing rules",
+  "Accessible, mobile-first interactions and keyboard-safe drawers",
+  "Edge deployment on Cloudflare with demonstration analytics hooks",
+];
+---
+
+<BaseLayout
+  title="About LocalPro Directory"
+  description="LocalPro Directory is a fictional local-services discovery concept built by Che Xu Studio to demonstrate search, SEO, listings and lead-generation architecture."
+  path="/about/"
+>
+  <section class="surface-hero border-b border-navy/10">
+    <div class="container-page py-12 md:py-16">
+      <p class="eyebrow">About this demo</p>
+      <h1 class="mt-3 max-w-3xl font-display text-display-md text-navy md:text-display-lg">
+        A fictional directory built to show what is possible
+      </h1>
+      <p class="prose-demo mt-5 text-lg">
+        {SITE.name} is a portfolio concept by <a href={env.studioUrl} class="font-semibold text-search hover:underline" target="_blank" rel="noopener noreferrer">Che Xu Studio</a>. It uses entirely fictional businesses, service areas and platform data to demonstrate how a modern local-services directory could work.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-page max-w-3xl">
+      <h2 class="font-display text-display-sm text-navy md:text-display-md">
+        What this demonstration includes
+      </h2>
+      <p class="prose-demo mt-4">
+        The demo is designed for prospective clients who want to see directory architecture in action—not as a live marketplace. Every provider profile, category count and service area is labelled as concept data. Quote requests and listing submissions do not contact real businesses or create real accounts.
+      </p>
+      <ul class="mt-8 grid gap-3 sm:grid-cols-2">
+        {
+          highlights.map((item) => (
+            <li class="rounded-lg border border-navy/10 bg-white px-4 py-3 text-sm text-navy">
+              {item}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-page grid gap-8 lg:grid-cols-2 lg:items-start">
+      <div>
+        <p class="eyebrow">Che Xu Studio</p>
+        <h2 class="mt-2 font-display text-display-sm text-navy md:text-display-md">
+          Built for search, scale and lead generation
+        </h2>
+        <p class="prose-demo mt-4">
+          Che Xu Studio designs and builds directory and marketplace platforms for businesses that need fast discovery, strong SEO foundations and conversion-focused listing experiences.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <button type="button" class="btn-primary" data-open-enquiry>
+            Request My Platform Plan
+          </button>
+          <a href={env.caseStudyUrl} class="btn-secondary" target="_blank" rel="noopener noreferrer">
+            Read the case study
+          </a>
+        </div>
+      </div>
+      <div class="card-interactive">
+        <h3 class="font-display text-lg font-semibold text-navy">What is not claimed</h3>
+        <ul class="mt-4 space-y-2 text-sm text-muted">
+          <li>No real provider verification, licensing or background checks</li>
+          <li>No ratings, reviews or popularity rankings</li>
+          <li>No live payments, subscriptions or listing purchases</li>
+          <li>No guarantee of search rankings or lead volume</li>
+        </ul>
+        <p class="mt-4 text-xs text-muted">{SITE.conceptNotice}</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

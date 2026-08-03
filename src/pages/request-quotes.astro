@@ -1,0 +1,53 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Breadcrumbs from "@/components/ui/Breadcrumbs.astro";
+import QuoteRequestDemo from "@/components/islands/QuoteRequestDemo";
+import { getDirectoryRepository } from "@/db/repository";
+import { getPublicEnv } from "@/lib/config";
+
+export const prerender = false;
+
+const repo = getDirectoryRepository();
+const categories = repo.listCategories().map((c) => ({ slug: c.slug, name: c.name }));
+const services = repo.listServices().map((s) => ({ slug: s.slug, name: s.name }));
+const areas = repo.listAreas().map((a) => ({ slug: a.slug, name: a.name }));
+const featured = repo.getFeatured(8).map((p) => ({ id: p.id, name: p.name, slug: p.slug }));
+const providerParam = Astro.url.searchParams.get("providers") || "";
+const initialProviderIds = providerParam
+  .split(",")
+  .map((id) => id.trim())
+  .filter(Boolean)
+  .slice(0, 3);
+const env = getPublicEnv();
+---
+
+<BaseLayout
+  title="Quote Request Demonstration"
+  description="Interactive LocalPro Directory quote-request demonstration. No personal information required and no request is transmitted."
+  path="/request-quotes/"
+  noindex={true}
+>
+  <section class="section pt-10">
+    <div class="container-page max-w-3xl">
+      <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Request quotes demo" }]} />
+      <p class="eyebrow">Quote request</p>
+      <h1 class="mt-2 font-display text-display-sm text-navy md:text-display-md">
+        Quote-request demonstration
+      </h1>
+      <p class="prose-demo mt-3">
+        Walk through a multistep enquiry flow designed for accessibility and clarity. This is an interactive portfolio demonstration only.
+      </p>
+      <div class="mt-8">
+        <QuoteRequestDemo
+          client:load
+          categories={categories}
+          services={services}
+          areas={areas}
+          providers={featured}
+          initialProviderIds={initialProviderIds}
+          caseStudyUrl={env.caseStudyUrl}
+        />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

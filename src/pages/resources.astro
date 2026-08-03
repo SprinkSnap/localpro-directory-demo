@@ -1,0 +1,111 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+export const prerender = true;
+
+const resources = [
+  {
+    title: "Directory SEO without thin pages",
+    category: "Technical SEO",
+    excerpt:
+      "How programmatic category, area and listing pages can stay useful and indexable when each URL carries unique, substantive content—not just a name and a count.",
+    topics: ["Canonical URLs", "Structured data", "Index quality gates"],
+  },
+  {
+    title: "Search UX that respects mobile context",
+    category: "Search experience",
+    excerpt:
+      "Principles for server-side search with shareable URL state, accessible filters, clear empty states and suggestions that help people refine—not overwhelm.",
+    topics: ["URL state", "Filter patterns", "Empty states"],
+  },
+  {
+    title: "Lead generation without dark patterns",
+    category: "Lead generation",
+    excerpt:
+      "Designing quote-request and enquiry flows that set clear expectations, collect only necessary information and route leads responsibly to providers.",
+    topics: ["Multistep forms", "Consent", "Enquiry routing"],
+  },
+  {
+    title: "Comparison tools that use real signals",
+    category: "Product design",
+    excerpt:
+      "Side-by-side comparison works when criteria come from actual profile data. Avoid fake trust badges, invented scores or unverifiable rankings.",
+    topics: ["Profile completeness", "Service menus", "Transparent labelling"],
+  },
+  {
+    title: "Provider onboarding that scales",
+    category: "Business flows",
+    excerpt:
+      "Structured submission, claim and plan-selection flows help businesses present accurate information while keeping moderation and quality checks manageable.",
+    topics: ["Listing submission", "Claim flows", "Plan tiers"],
+  },
+  {
+    title: "Accessibility as a directory requirement",
+    category: "Accessibility",
+    excerpt:
+      "Keyboard-safe navigation, visible focus, semantic structure and screen-reader announcements are baseline expectations for public discovery platforms.",
+    topics: ["WCAG 2.2", "Focus management", "Live regions"],
+  },
+];
+---
+
+<BaseLayout
+  title="Resources"
+  description="Editorial resources on directory SEO, search UX and lead generation—written for the LocalPro Directory portfolio concept without fabricated statistics."
+  path="/resources/"
+>
+  <section class="surface-hero border-b border-navy/10">
+    <div class="container-page py-12 md:py-16">
+      <p class="eyebrow">Resources</p>
+      <h1 class="mt-3 max-w-3xl font-display text-display-md text-navy md:text-display-lg">
+        Ideas behind the demonstration
+      </h1>
+      <p class="prose-demo mt-5 text-lg">
+        These editorial cards explore the product and technical thinking behind LocalPro Directory. They are not gated downloads and do not include fabricated statistics or case-study metrics.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-page">
+      <ul class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {
+          resources.map((resource) => (
+            <li class="card-interactive flex h-full flex-col">
+              <p class="text-xs font-semibold uppercase tracking-[0.14em] text-teal">{resource.category}</p>
+              <h2 class="mt-2 font-display text-lg font-semibold text-navy">{resource.title}</h2>
+              <p class="mt-3 flex-1 text-sm leading-relaxed text-muted">{resource.excerpt}</p>
+              <ul class="mt-4 flex flex-wrap gap-2">
+                {resource.topics.map((topic) => (
+                  <li class="rounded-md border border-navy/10 bg-cloud px-2 py-1 text-xs font-medium text-navy">
+                    {topic}
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="mt-8 text-xs text-muted">
+        Portfolio concept by Che Xu Studio. Resources describe demonstration architecture, not live product documentation.
+      </p>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-page text-center">
+      <h2 class="font-display text-display-sm text-navy md:text-display-md">
+        Want these patterns in your platform?
+      </h2>
+      <p class="prose-demo mx-auto mt-4">
+        Che Xu Studio applies these principles when designing directories and marketplaces for real clients.
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <button type="button" class="btn-primary" data-open-enquiry>
+          Start a Conversation
+        </button>
+        <a href="/how-it-works/" class="btn-secondary">See how the demo works</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

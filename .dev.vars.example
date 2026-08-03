@@ -1,0 +1,16 @@
+# Copy to .dev.vars for local development. Never commit real secrets.
+# Cloudflare Turnstile — use test keys locally:
+# https://developers.cloudflare.com/turnstile/troubleshooting/testing/
+TURNSTILE_SECRET_KEY=1x0000000000000000000000000000000AA
+
+# Optional: override public Turnstile site key
+# PUBLIC_TURNSTILE_SITE_KEY=1x00000000000000000000AA
+
+# Demo mode must remain true for this portfolio demonstration
+DEMO_MODE=true
+
+# Comma-separated allowed origins for lead and assistant endpoints
+ALLOWED_ORIGINS=http://localhost:4321,http://127.0.0.1:4321
+
+# Optional Workers AI (requires Cloudflare account binding in wrangler.toml)
+# AI matching assistant is disabled when AI binding is unavailable

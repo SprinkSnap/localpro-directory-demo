@@ -1,0 +1,75 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { SITE } from "@/lib/config";
+
+export const prerender = true;
+---
+
+<BaseLayout
+  title="Privacy Policy"
+  description="Privacy policy for the LocalPro Directory portfolio demonstration and Che Xu Studio portfolio lead handling."
+  path="/privacy/"
+>
+  <section class="surface-hero border-b border-navy/10">
+    <div class="container-page py-12 md:py-16">
+      <p class="eyebrow">Privacy</p>
+      <h1 class="mt-3 max-w-3xl font-display text-display-md text-navy md:text-display-lg">
+        Privacy policy
+      </h1>
+      <p class="prose-demo mt-5 text-lg">
+        This policy describes how the {SITE.name} portfolio demonstration handles information—and how Che Xu Studio processes genuine portfolio enquiries submitted through the site.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-page max-w-3xl space-y-10">
+      <article>
+        <h2 class="font-display text-xl font-semibold text-navy">Fictional demo data</h2>
+        <p class="prose-demo mt-3">
+          All provider listings, categories, areas and search results in this demonstration are fictional. Quote-request, listing submission and claim-listing flows do not transmit enquiries to real businesses. Data entered in those demo forms is not used to create accounts or contact providers.
+        </p>
+      </article>
+
+      <article>
+        <h2 class="font-display text-xl font-semibold text-navy">Local browser storage</h2>
+        <p class="prose-demo mt-3">
+          The demo may store saved provider lists and UI preferences in your browser's local storage or session storage. This data stays on your device and is not synced to a user account.
+        </p>
+      </article>
+
+      <article>
+        <h2 class="font-display text-xl font-semibold text-navy">Portfolio lead enquiries</h2>
+        <p class="prose-demo mt-3">
+          When you submit the Che Xu Studio enquiry form, we collect the information you provide (such as name, email, company and project details) to respond to your request. Submissions may be protected by Cloudflare Turnstile and processed according to Che Xu Studio's standard portfolio lead handling practices.
+        </p>
+      </article>
+
+      <article>
+        <h2 class="font-display text-xl font-semibold text-navy">Analytics and logs</h2>
+        <p class="prose-demo mt-3">
+          The demonstration may record anonymised interaction events (such as demo views or feature usage) to improve the portfolio experience. Server and edge logs may include standard technical data such as IP address, user agent and request path for security and reliability.
+        </p>
+      </article>
+
+      <article>
+        <h2 class="font-display text-xl font-semibold text-navy">Your choices</h2>
+        <p class="prose-demo mt-3">
+          You can clear local browser storage at any time. For portfolio enquiries, contact Che Xu Studio to request access to or deletion of information you have submitted, subject to applicable law and legitimate business needs.
+        </p>
+      </article>
+
+      <p class="text-xs text-muted">
+        Last updated for portfolio demonstration purposes. A production platform would require a policy tailored to its jurisdiction, data flows and user roles.
+      </p>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-page text-center">
+      <button type="button" class="btn-primary" data-open-enquiry>
+        Contact Che Xu Studio
+      </button>
+    </div>
+  </section>
+</BaseLayout>

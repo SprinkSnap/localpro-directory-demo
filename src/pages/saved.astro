@@ -1,0 +1,30 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Breadcrumbs from "@/components/ui/Breadcrumbs.astro";
+import SavedExperience from "@/components/islands/SavedExperience";
+
+export const prerender = true;
+---
+
+<BaseLayout
+  title="Saved Listings"
+  description="Review fictional professionals you saved in LocalPro Directory. Saved locally in your browser—no account required."
+  path="/saved/"
+  noindex={true}
+>
+  <section class="section pt-10">
+    <div class="container-page">
+      <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Saved" }]} />
+      <p class="eyebrow">Saved</p>
+      <h1 class="mt-2 font-display text-display-sm text-navy md:text-display-md">
+        Saved concept profiles
+      </h1>
+      <p class="prose-demo mt-3">
+        Your saved list persists in this browser only. No account is created and no provider is notified.
+      </p>
+      <div class="mt-8">
+        <SavedExperience client:load />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

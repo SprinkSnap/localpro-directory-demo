@@ -1,0 +1,203 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Breadcrumbs from "@/components/ui/Breadcrumbs.astro";
+import ProviderCard from "@/components/directory/ProviderCard.astro";
+import ProviderActions from "@/components/islands/ProviderActions";
+import { getDirectoryRepository } from "@/db/repository";
+import { getProviders } from "@/data/seed-providers";
+import { getPublicEnv } from "@/lib/config";
+
+export const prerender = true;
+
+export function getStaticPaths() {
+  return getProviders().map((provider) => ({
+    params: { slug: provider.slug },
+  }));
+}
+
+const repo = getDirectoryRepository();
+const slug = Astro.params.slug!;
+const provider = repo.getProvider(slug);
+if (!provider) return Astro.redirect("/404/");
+
+const similar = repo.similarProviders(slug, 3);
+const env = getPublicEnv();
+const category = repo.getCategory(provider.primaryCategorySlug);
+---
+
+<BaseLayout
+  title={`${provider.name} — Concept Profile`}
+  description={`${provider.shortDescription} Fictional LocalPro Directory concept profile.`}
+  path={`/professionals/${provider.slug}/`}
+  noindex={true}
+>
+  <section class="section pt-10">
+    <div class="container-page">
+      <Breadcrumbs
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Categories", path: "/categories/" },
+          { name: provider.primaryCategoryName, path: `/categories/${provider.primaryCategorySlug}/` },
+          { name: provider.name },
+        ]}
+      />
+
+      <div class="rounded-xl border border-amber/30 bg-amber-light px-4 py-3 text-sm text-charcoal" role="note">
+        <strong>Fictional profile disclosure:</strong> This is a concept listing for portfolio demonstration.
+        It does not represent a real business, contact method, licence, insurance policy or verification status.
+      </div>
+
+      <div class="mt-6 grid gap-8 lg:grid-cols-[1fr_320px]">
+        <div>
+          <div class="flex flex-wrap gap-2">
+            <span class="status-concept">{provider.conceptLabel}</span>
+            {provider.sponsoredDemo && <span class="status-sponsored">Sponsored demo placement</span>}
+            {provider.hasPortfolio && <span class="status-portfolio">Portfolio available</span>}
+            {provider.featured && <span class="status-pill border-search/30 bg-search-light text-search">Featured demo</span>}
+          </div>
+          <h1 class="mt-4 font-display text-display-sm text-navy md:text-display-md">{provider.name}</h1>
+          <p class="mt-2 text-muted">
+            {provider.primaryCategoryName}
+            <span aria-hidden="true"> · </span>
+            {provider.areaNames.join(", ")}
+            <span aria-hidden="true"> · </span>
+            {provider.businessType.replace("-", " ")}
+          </p>
+
+          <div class="mt-8">
+            <h2 class="font-display text-xl font-semibold text-navy">About this concept profile</h2>
+            <p class="mt-3 max-w-prose text-base leading-relaxed text-charcoal">{provider.longDescription}</p>
+          </div>
+
+          <div class="mt-8 grid gap-6 md:grid-cols-2">
+            <div>
+              <h2 class="font-display text-lg font-semibold text-navy">Services</h2>
+              <ul class="mt-3 space-y-2">
+                {provider.serviceNames.map((name) => (
+                  <li class="rounded-md border border-navy/10 bg-white px-3 py-2 text-sm text-charcoal">{name}</li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h2 class="font-display text-lg font-semibold text-navy">General service areas</h2>
+              <ul class="mt-3 space-y-2">
+                {provider.areaNames.map((name) => (
+                  <li class="rounded-md border border-navy/10 bg-white px-3 py-2 text-sm text-charcoal">{name}</li>
+                ))}
+              </ul>
+              <h2 class="mt-6 font-display text-lg font-semibold text-navy">Business information architecture</h2>
+              <dl class="mt-3 space-y-2 text-sm">
+                <div class="flex justify-between gap-3 border-b border-navy/10 py-2">
+                  <dt class="text-muted">Business type</dt>
+                  <dd class="font-semibold text-navy capitalize">{provider.businessType.replace("-", " ")}</dd>
+                </div>
+                <div class="flex justify-between gap-3 border-b border-navy/10 py-2">
+                  <dt class="text-muted">Profile completeness</dt>
+                  <dd class="tabular font-semibold text-navy">{provider.profileCompleteness}%</dd>
+                </div>
+                <div class="flex justify-between gap-3 border-b border-navy/10 py-2">
+                  <dt class="text-muted">Demo response preference</dt>
+                  <dd class="font-semibold text-navy capitalize">{provider.responsePreference.replace("-", " ")}</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+
+          {
+            provider.portfolioImages.length > 0 && (
+              <div class="mt-10">
+                <h2 class="font-display text-xl font-semibold text-navy">Portfolio gallery</h2>
+                <p class="mt-2 text-sm text-muted">Purpose-built demonstration visuals—not real project photography.</p>
+                <ul class="mt-4 grid gap-4 sm:grid-cols-2">
+                  {provider.portfolioImages.map((image) => (
+                    <li>
+                      <figure class="overflow-hidden rounded-xl border border-navy/10 bg-white">
+                        <img
+                          src={image.src}
+                          alt={image.alt}
+                          width="800"
+                          height="600"
+                          loading="lazy"
+                          decoding="async"
+                          class="aspect-[4/3] w-full object-cover"
+                        />
+                        <figcaption class="px-3 py-2 text-xs text-muted">{image.alt}</figcaption>
+                      </figure>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )
+          }
+
+          <div class="mt-10 rounded-xl border border-navy/10 bg-white p-5">
+            <h2 class="font-display text-lg font-semibold text-navy">Report listing demonstration</h2>
+            <p class="mt-2 text-sm text-muted">
+              In a real directory, visitors could report inaccurate or abusive listings. This demo does not transmit reports.
+            </p>
+            <button
+              type="button"
+              class="btn-secondary mt-4"
+              onclick="alert('Report demonstration only. No report was sent.')"
+            >
+              Report this concept listing
+            </button>
+          </div>
+        </div>
+
+        <aside class="h-fit rounded-xl border border-navy/10 bg-white p-5 shadow-soft lg:sticky lg:top-24">
+          <h2 class="font-display text-lg font-semibold text-navy">Next steps</h2>
+          <p class="mt-2 text-sm text-muted">
+            Save, compare or explore the quote-request demonstration. No real contact details are available.
+          </p>
+          <div class="mt-4">
+            <div
+              class="mb-4 h-2 overflow-hidden rounded-full bg-navy/10"
+              role="meter"
+              aria-label={`Profile completeness ${provider.profileCompleteness} percent`}
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow={provider.profileCompleteness}
+            >
+              <div class="h-full rounded-full bg-teal" style={`width:${provider.profileCompleteness}%`}></div>
+            </div>
+            <ProviderActions
+              client:visible
+              providerId={provider.id}
+              providerSlug={provider.slug}
+              providerName={provider.name}
+            />
+          </div>
+          <div class="mt-6 rounded-lg bg-navy p-4 text-white">
+            <p class="text-sm font-semibold">Want a directory like this?</p>
+            <p class="mt-2 text-xs text-white/80">Che Xu Studio designs discovery and lead-generation platforms.</p>
+            <button type="button" class="btn mt-4 w-full bg-white text-navy hover:bg-cloud" data-open-enquiry>
+              Build a Platform Like This
+            </button>
+            <a href={env.caseStudyUrl} class="btn mt-2 w-full border border-white/30 text-white hover:bg-white/10" target="_blank" rel="noopener noreferrer">
+              View case study
+            </a>
+          </div>
+          {category && (
+            <a href={`/categories/${category.slug}/`} class="btn-ghost mt-4 w-full">
+              More in {category.name}
+            </a>
+          )}
+        </aside>
+      </div>
+
+      {
+        similar.length > 0 && (
+          <div class="mt-14">
+            <h2 class="font-display text-2xl font-semibold text-navy">Similar fictional providers</h2>
+            <ul class="mt-6 grid gap-4 md:grid-cols-3">
+              {similar.map((item) => (
+                <li><ProviderCard provider={item} /></li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
+    </div>
+  </section>
+</BaseLayout>

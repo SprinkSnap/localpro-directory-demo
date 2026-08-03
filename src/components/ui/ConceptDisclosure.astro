@@ -1,0 +1,16 @@
+---
+interface Props {
+  compact?: boolean;
+}
+const { compact = false } = Astro.props;
+---
+
+<div class="disclosure-banner" role="note" aria-label="Portfolio concept disclosure">
+  <div class:list={["container-page", compact ? "py-2.5" : "py-3"]}>
+    <p class:list={[compact ? "text-xs md:text-sm" : "text-sm", "leading-relaxed"]}>
+      <strong class="font-semibold text-navy">Portfolio concept by Che Xu Studio.</strong>
+      {" "}
+      LocalPro Directory uses fictional businesses, service areas and platform data.
+    </p>
+  </div>
+</div>

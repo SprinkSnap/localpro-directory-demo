@@ -1,0 +1,55 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Breadcrumbs from "@/components/ui/Breadcrumbs.astro";
+import { getDirectoryRepository } from "@/db/repository";
+import { itemListJsonLd } from "@/lib/seo";
+import { getPublicEnv } from "@/lib/config";
+
+export const prerender = true;
+
+const repo = getDirectoryRepository();
+const areas = repo.listAreas();
+const env = getPublicEnv();
+const jsonLd = itemListJsonLd(
+  "LocalPro Directory service areas",
+  areas.map((a) => ({ name: a.name, path: `/areas/${a.slug}/` })),
+  env.siteUrl,
+);
+---
+
+<BaseLayout
+  title="Service Areas"
+  description="Browse fictional LocalPro Directory service areas used to demonstrate neighbourhood discovery and area-based search."
+  path="/areas/"
+  jsonLd={jsonLd}
+>
+  <section class="section pt-10">
+    <div class="container-page">
+      <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Areas" }]} />
+      <p class="eyebrow">Areas</p>
+      <h1 class="mt-2 font-display text-display-sm text-navy md:text-display-md">
+        Browse fictional service areas
+      </h1>
+      <p class="prose-demo mt-3">
+        These districts are invented for the portfolio demonstration. No real addresses or map coordinates are used.
+      </p>
+      <ul class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          areas.map((area) => (
+            <li>
+              <a href={`/areas/${area.slug}/`} class="card-interactive block h-full">
+                <p class="text-xs font-semibold uppercase tracking-[0.14em] text-teal">{area.districtGroup}</p>
+                <h2 class="mt-2 font-display text-xl font-semibold text-navy">{area.name}</h2>
+                <p class="mt-2 text-sm text-muted">{area.shortDescription}</p>
+                <p class="mt-4 text-xs font-semibold text-navy">
+                  <span class="tabular">{repo.countByArea(area.id)}</span> sample listings
+                  <span class="font-normal text-muted"> (demonstration data)</span>
+                </p>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
