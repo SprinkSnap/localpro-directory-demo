@@ -132,7 +132,7 @@ export default function SiteHeader() {
         <button
           ref={buttonRef}
           type="button"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-navy/15 bg-white text-navy shadow-soft transition hover:border-search/40 hover:bg-search-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-search lg:hidden"
+          className="relative z-[60] inline-flex h-11 w-11 items-center justify-center rounded-md border border-navy/15 bg-white text-navy shadow-soft transition hover:border-search/40 hover:bg-search-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-search lg:hidden"
           aria-expanded={open}
           aria-controls={panelId}
           aria-label={open ? "Close navigation menu" : "Open navigation menu"}
@@ -146,7 +146,7 @@ export default function SiteHeader() {
         <div className="lg:hidden">
           <button
             type="button"
-            className="fixed inset-0 z-40 bg-navy/40"
+            className="fixed inset-x-0 bottom-0 top-header z-40 bg-navy/40"
             aria-label="Close menu"
             onClick={closeMenu}
           />
