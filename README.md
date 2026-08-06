@@ -149,11 +149,14 @@ Numbered pagination with `page` + `limit`, plus `nextCursor` compatibility field
 
 Original SVG brand/portfolio placeholders only. See `ASSET_LICENSES.md`. Prefer Cloudflare Images in a real deployment; demo uses optimized local SVG with explicit dimensions and lazy loading below the fold.
 
-Recommended mobile case-study screenshots are in `docs/screenshots/mobile/`. Regenerate against a running preview:
+Recommended case-study screenshots are in `docs/screenshots/mobile/` and `docs/screenshots/desktop/`. Regenerate against a running preview:
 
 ```bash
 npm run build && npm run preview
+npm run screenshots          # both breakpoints
+# or:
 npm run screenshots:mobile
+npm run screenshots:desktop
 ```
 
 ## Testing
