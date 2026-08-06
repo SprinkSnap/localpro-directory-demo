@@ -129,7 +129,7 @@ const LONG_TEMPLATES = [
 const CUSTOM_PORTFOLIO_BY_SLUG: Record<string, Array<{ src: string; alt: string }>> = {
   "lakeshore-pro-studio": [
     {
-      src: "/images/lakeshore-pro-studio-landscaping.svg",
+      src: "/images/lakeshore-pro-studio-landscaping.jpg",
       alt: "Fictional landscaping portfolio sample for Lakeshore Pro Studio — stone path, native planting and lakeside terrace concept",
     },
   ],
