@@ -126,7 +126,34 @@ const LONG_TEMPLATES = [
   "{name} exists only as a LocalPro Directory demonstration listing. It models how {category} services can be discovered by area, compared side by side and included in a non-transmitting quote-request flow. All details are fictional and intended for portfolio evaluation by Che Xu Studio.",
 ];
 
-function portfolioImages(providerId: string, name: string, categoryName: string, count: number): ProviderImage[] {
+const CUSTOM_PORTFOLIO_BY_SLUG: Record<string, Array<{ src: string; alt: string }>> = {
+  "lakeshore-pro-studio": [
+    {
+      src: "/images/lakeshore-pro-studio-landscaping.svg",
+      alt: "Fictional landscaping portfolio sample for Lakeshore Pro Studio — stone path, native planting and lakeside terrace concept",
+    },
+  ],
+};
+
+function portfolioImages(
+  providerId: string,
+  name: string,
+  categoryName: string,
+  count: number,
+  slug?: string,
+): ProviderImage[] {
+  const custom = slug ? CUSTOM_PORTFOLIO_BY_SLUG[slug] : undefined;
+  if (custom?.length) {
+    return custom.map((image, i) => ({
+      id: `${providerId}-img-${i + 1}`,
+      providerId,
+      src: image.src,
+      alt: image.alt,
+      sortOrder: i,
+      kind: i === 0 ? ("thumbnail" as const) : ("portfolio" as const),
+    }));
+  }
+
   const images: ProviderImage[] = [];
   for (let i = 0; i < count; i++) {
     images.push({
@@ -212,7 +239,7 @@ export function generateProviders(count = PROVIDER_COUNT): Provider[] {
       categoryIds,
       serviceIds: selectedServices.map((s) => s.id),
       areaIds: selectedAreas.map((a) => a.id),
-      portfolioImages: portfolioImages(id, name, primaryCategory.name, portfolioCount),
+      portfolioImages: portfolioImages(id, name, primaryCategory.name, portfolioCount, slug),
       imageAlt: `Abstract demonstration thumbnail for ${name}, a fictional ${primaryCategory.name} listing`,
       businessType,
       profileCompleteness,

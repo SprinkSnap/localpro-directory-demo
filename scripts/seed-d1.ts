@@ -82,10 +82,8 @@ for (const provider of providers) {
     );
   }
   for (const image of provider.portfolioImages) {
-    // Store lightweight placeholder path instead of huge data URIs in D1
-    const src = `/images/portfolio-placeholder.svg`;
     statements.push(
-      `INSERT INTO provider_images (id, provider_id, src, alt, sort_order, kind) VALUES (${sqlString(image.id)}, ${sqlString(provider.id)}, ${sqlString(src)}, ${sqlString(image.alt)}, ${image.sortOrder}, ${sqlString(image.kind)});`,
+      `INSERT INTO provider_images (id, provider_id, src, alt, sort_order, kind) VALUES (${sqlString(image.id)}, ${sqlString(provider.id)}, ${sqlString(image.src)}, ${sqlString(image.alt)}, ${image.sortOrder}, ${sqlString(image.kind)});`,
     );
   }
 }
