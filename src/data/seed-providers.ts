@@ -1,7 +1,18 @@
 import { CATEGORIES } from "./categories";
 import { AREAS } from "./areas";
 import { SERVICES } from "./services";
+import { PORTFOLIO_IMAGES_BY_SLUG } from "./portfolio-image-map";
 import type { BusinessType, Provider, ProviderImage } from "@/lib/types";
+
+type PortfolioImageRef = { readonly src: string; readonly alt: string };
+
+/** Safe string-slug lookup for the const portfolio map without widening unrelated types. */
+function mappedPortfolioImages(slug: string): ReadonlyArray<PortfolioImageRef> | undefined {
+  if (!Object.prototype.hasOwnProperty.call(PORTFOLIO_IMAGES_BY_SLUG, slug)) {
+    return undefined;
+  }
+  return PORTFOLIO_IMAGES_BY_SLUG[slug as keyof typeof PORTFOLIO_IMAGES_BY_SLUG];
+}
 
 /** Deterministic PRNG (mulberry32) for reproducible seed data. */
 function mulberry32(seed: number) {
@@ -197,6 +208,18 @@ function portfolioImages(
   const custom = slug ? CUSTOM_PORTFOLIO_BY_SLUG[slug] : undefined;
   if (custom?.length) {
     return custom.map((image, i) => ({
+      id: `${providerId}-img-${i + 1}`,
+      providerId,
+      src: image.src,
+      alt: image.alt,
+      sortOrder: i,
+      kind: i === 0 ? ("thumbnail" as const) : ("portfolio" as const),
+    }));
+  }
+
+  const mapped = slug ? mappedPortfolioImages(slug) : undefined;
+  if (mapped?.length) {
+    return mapped.map((image, i) => ({
       id: `${providerId}-img-${i + 1}`,
       providerId,
       src: image.src,
