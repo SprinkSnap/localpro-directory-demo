@@ -10,6 +10,14 @@ LocalPro Directory uses only original assets created for this portfolio demonstr
 | `public/images/lakeshore-pro-studio-landscaping.jpg` | Original Che Xu Studio concept art | All rights reserved; demo use in this repo | Lakeshore Pro Studio landscaping portfolio sample used in listing gallery |
 | `public/images/silverline-flooring-hardwood-refinishing.svg` | Original Che Xu Studio concept art | All rights reserved; demo use in this repo | Silverline Flooring Practice hardwood refinishing concept (SVG wrapper) |
 | `public/images/silverline-flooring-hardwood-refinishing.jpg` | Original Che Xu Studio concept art | All rights reserved; demo use in this repo | Silverline Flooring Practice hardwood refinishing sample used in listing gallery |
+| `public/images/summit-appliance-refrigerator-diagnosis.svg` | Original Che Xu Studio concept art | All rights reserved; demo use in this repo | Summit Appliance Team refrigerator diagnosis concept (SVG wrapper) |
+| `public/images/summit-appliance-refrigerator-diagnosis.jpg` | Original Che Xu Studio concept art | All rights reserved; demo use in this repo | Summit Appliance Team refrigerator diagnosis sample (gallery lead / thumbnail) |
+| `public/images/summit-appliance-washer-service.svg` | Original Che Xu Studio concept art | All rights reserved; demo use in this repo | Summit Appliance Team washer service concept (SVG wrapper) |
+| `public/images/summit-appliance-washer-service.jpg` | Original Che Xu Studio concept art | All rights reserved; demo use in this repo | Summit Appliance Team washer service sample used in listing gallery |
+| `public/images/summit-appliance-dishwasher-diagnosis.svg` | Original Che Xu Studio concept art | All rights reserved; demo use in this repo | Summit Appliance Team dishwasher diagnosis concept (SVG wrapper) |
+| `public/images/summit-appliance-dishwasher-diagnosis.jpg` | Original Che Xu Studio concept art | All rights reserved; demo use in this repo | Summit Appliance Team dishwasher diagnosis sample used in listing gallery |
+| `public/images/summit-appliance-oven-inspection.svg` | Original Che Xu Studio concept art | All rights reserved; demo use in this repo | Summit Appliance Team oven inspection concept (SVG wrapper) |
+| `public/images/summit-appliance-oven-inspection.jpg` | Original Che Xu Studio concept art | All rights reserved; demo use in this repo | Summit Appliance Team oven inspection sample used in listing gallery |
 | `docs/screenshots/mobile/*.png` | Captured from LocalPro Directory demo UI | All rights reserved; demo/case-study use | Recommended mobile case-study screens; fictional content only |
 | `docs/screenshots/desktop/*.png` | Captured from LocalPro Directory demo UI | All rights reserved; demo/case-study use | Recommended desktop case-study screens; fictional content only |
 | LocalPro logo SVG in components | Original | All rights reserved; demo use in this repo | Inline accessible SVG |

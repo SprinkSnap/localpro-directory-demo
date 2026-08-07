@@ -139,6 +139,26 @@ const CUSTOM_PORTFOLIO_BY_SLUG: Record<string, Array<{ src: string; alt: string 
       alt: "Fictional hardwood refinishing portfolio sample for Silverline Flooring Practice — sanded oak floor, natural finish and bright interior concept",
     },
   ],
+  // Conversion/SEO order: lead with highest-urgency fridge diagnosis as thumbnail,
+  // then high-volume washer, then kitchen dishwasher/oven coverage.
+  "summit-appliance-team": [
+    {
+      src: "/images/summit-appliance-refrigerator-diagnosis.jpg",
+      alt: "Fictional refrigerator diagnosis portfolio sample for Summit Appliance Team — safe temperature assessment in a residential kitchen",
+    },
+    {
+      src: "/images/summit-appliance-washer-service.jpg",
+      alt: "Fictional washer service portfolio sample for Summit Appliance Team — levelling assessment in a residential laundry room",
+    },
+    {
+      src: "/images/summit-appliance-dishwasher-diagnosis.jpg",
+      alt: "Fictional dishwasher diagnosis portfolio sample for Summit Appliance Team — careful inspection in a bright residential kitchen",
+    },
+    {
+      src: "/images/summit-appliance-oven-inspection.jpg",
+      alt: "Fictional oven inspection portfolio sample for Summit Appliance Team — door and rack check in a residential kitchen",
+    },
+  ],
 };
 
 function portfolioImages(
