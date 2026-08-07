@@ -133,6 +133,12 @@ const CUSTOM_PORTFOLIO_BY_SLUG: Record<string, Array<{ src: string; alt: string 
       alt: "Fictional landscaping portfolio sample for Lakeshore Pro Studio — stone path, native planting and lakeside terrace concept",
     },
   ],
+  "silverline-flooring-practice": [
+    {
+      src: "/images/silverline-flooring-hardwood-refinishing.jpg",
+      alt: "Fictional hardwood refinishing portfolio sample for Silverline Flooring Practice — sanded oak floor, natural finish and bright interior concept",
+    },
+  ],
 };
 
 function portfolioImages(
