@@ -9,7 +9,7 @@ export const SITE = {
   publicDomain: "https://localprodirectory.chexustudio.com",
   caseStudyUrl: "https://chexustudio.com/work/localpro-directory",
   studioUrl: "https://chexustudio.com",
-  packagesUrl: "https://chexustudio.com/packages",
+  packagesUrl: "https://chexustudio.com/pricing/",
   contactEmail: "hello@chexustudio.com",
   conceptNotice:
     "Portfolio concept by Che Xu Studio. LocalPro Directory uses fictional businesses, service areas and platform data.",
