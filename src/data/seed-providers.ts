@@ -159,6 +159,32 @@ const CUSTOM_PORTFOLIO_BY_SLUG: Record<string, Array<{ src: string; alt: string 
       alt: "Fictional oven inspection portfolio sample for Summit Appliance Team — door and rack check in a residential kitchen",
     },
   ],
+  // Conversion/SEO order: recurring home cleaning leads (highest LTV / primary search intent),
+  // then deep kitchen and bathroom proof points, then situational move-out cleaning.
+  "bluebell-local-company": [
+    {
+      src: "/images/bluebell-recurring-home-cleaning.jpg",
+      alt: "Fictional recurring home cleaning portfolio sample for Bluebell Local Company — careful dusting and finishing in a bright living room",
+    },
+    {
+      src: "/images/bluebell-deep-clean-kitchen.jpg",
+      alt: "Fictional deep kitchen cleaning portfolio sample for Bluebell Local Company — detailed countertop and sink finishing",
+    },
+    {
+      src: "/images/bluebell-bathroom-cleaning.jpg",
+      alt: "Fictional bathroom cleaning portfolio sample for Bluebell Local Company — mirror and vanity finishing in a bright residential bath",
+    },
+    {
+      src: "/images/bluebell-move-out-cleaning.jpg",
+      alt: "Fictional move-out cleaning portfolio sample for Bluebell Local Company — empty room vacuumed and prepared for turnover",
+    },
+  ],
+  "truenorth-flooring-services": [
+    {
+      src: "/images/truenorth-flooring-tile-installation.jpg",
+      alt: "Fictional tile installation portfolio sample for TrueNorth Flooring Services — large-format tile layout with a clean flush transition",
+    },
+  ],
 };
 
 function portfolioImages(

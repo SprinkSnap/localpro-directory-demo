@@ -18,6 +18,16 @@ LocalPro Directory uses only original assets created for this portfolio demonstr
 | `public/images/summit-appliance-dishwasher-diagnosis.jpg` | Original Che Xu Studio concept art | All rights reserved; demo use in this repo | Summit Appliance Team dishwasher diagnosis sample used in listing gallery |
 | `public/images/summit-appliance-oven-inspection.svg` | Original Che Xu Studio concept art | All rights reserved; demo use in this repo | Summit Appliance Team oven inspection concept (SVG wrapper) |
 | `public/images/summit-appliance-oven-inspection.jpg` | Original Che Xu Studio concept art | All rights reserved; demo use in this repo | Summit Appliance Team oven inspection sample used in listing gallery |
+| `public/images/bluebell-recurring-home-cleaning.svg` | Original Che Xu Studio concept art | All rights reserved; demo use in this repo | Bluebell Local Company recurring home cleaning concept (SVG wrapper) |
+| `public/images/bluebell-recurring-home-cleaning.jpg` | Original Che Xu Studio concept art | All rights reserved; demo use in this repo | Bluebell Local Company recurring home cleaning sample (gallery lead / thumbnail) |
+| `public/images/bluebell-deep-clean-kitchen.svg` | Original Che Xu Studio concept art | All rights reserved; demo use in this repo | Bluebell Local Company deep kitchen cleaning concept (SVG wrapper) |
+| `public/images/bluebell-deep-clean-kitchen.jpg` | Original Che Xu Studio concept art | All rights reserved; demo use in this repo | Bluebell Local Company deep kitchen cleaning sample used in listing gallery |
+| `public/images/bluebell-bathroom-cleaning.svg` | Original Che Xu Studio concept art | All rights reserved; demo use in this repo | Bluebell Local Company bathroom cleaning concept (SVG wrapper) |
+| `public/images/bluebell-bathroom-cleaning.jpg` | Original Che Xu Studio concept art | All rights reserved; demo use in this repo | Bluebell Local Company bathroom cleaning sample used in listing gallery |
+| `public/images/bluebell-move-out-cleaning.svg` | Original Che Xu Studio concept art | All rights reserved; demo use in this repo | Bluebell Local Company move-out cleaning concept (SVG wrapper) |
+| `public/images/bluebell-move-out-cleaning.jpg` | Original Che Xu Studio concept art | All rights reserved; demo use in this repo | Bluebell Local Company move-out cleaning sample used in listing gallery |
+| `public/images/truenorth-flooring-tile-installation.svg` | Original Che Xu Studio concept art | All rights reserved; demo use in this repo | TrueNorth Flooring Services tile installation concept (SVG wrapper) |
+| `public/images/truenorth-flooring-tile-installation.jpg` | Original Che Xu Studio concept art | All rights reserved; demo use in this repo | TrueNorth Flooring Services tile installation sample used in listing gallery |
 | `docs/screenshots/mobile/*.png` | Captured from LocalPro Directory demo UI | All rights reserved; demo/case-study use | Recommended mobile case-study screens; fictional content only |
 | `docs/screenshots/desktop/*.png` | Captured from LocalPro Directory demo UI | All rights reserved; demo/case-study use | Recommended desktop case-study screens; fictional content only |
 | LocalPro logo SVG in components | Original | All rights reserved; demo use in this repo | Inline accessible SVG |
