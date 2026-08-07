@@ -7,7 +7,7 @@ export const SITE = {
   worker: "localpro-directory-demo",
   stagingWorker: "localpro-directory-demo-staging",
   publicDomain: "https://localprodirectory.chexustudio.com",
-  caseStudyUrl: "https://chexustudio.com/work/localpro-directory",
+  caseStudyUrl: "https://chexustudio.com/work/",
   studioUrl: "https://chexustudio.com",
   packagesUrl: "https://chexustudio.com/pricing/",
   contactEmail: "hello@chexustudio.com",
