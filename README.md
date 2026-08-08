@@ -5,7 +5,7 @@ Fictional local-services directory and quote-request platform concept by **Che X
 > Portfolio concept by Che Xu Studio. LocalPro Directory uses fictional businesses, service areas and platform data.
 
 - **Public domain:** https://localprodirectory.chexustudio.com  
-- **Case study:** https://chexustudio.com/work/localpro-directory  
+- **Case study:** https://chexustudio.com/work/  
 - **Worker:** `localpro-directory-demo`  
 - **Staging Worker:** `localpro-directory-demo-staging`
 

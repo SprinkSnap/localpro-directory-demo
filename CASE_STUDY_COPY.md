@@ -1,6 +1,6 @@
 # LocalPro Directory — Che Xu Studio case study copy
 
-**Target URL:** https://chexustudio.com/work/localpro-directory  
+**Target URL:** https://chexustudio.com/work/  
 **Live demo:** https://localprodirectory.chexustudio.com  
 
 ## SEO
