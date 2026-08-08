@@ -23,7 +23,7 @@
 - [ ] Verify sponsored demo placements are labelled
 - [ ] Verify portfolio lead form stores to D1 and redacts logs
 - [ ] Verify quote-request and business-onboarding demos do not transmit listing data
-- [ ] Publish case study content to Che Xu Studio (`CASE_STUDY_COPY.md`)
+- [ ] Publish case study content to Che Xu Studio work (`https://chexustudio.com/work/` from `CASE_STUDY_COPY.md`)
 - [ ] Confirm analytics does not receive personal or free-text search/onboarding content
 
 ## Owner-supplied values
@@ -44,6 +44,6 @@
 1. No deployment authorization yet
 2. Production Turnstile secrets not provisioned
 3. Custom domain / DNS not configured
-4. Che Xu Studio case-study page not published from `CASE_STUDY_COPY.md`
+4. Che Xu Studio work listing not published from `CASE_STUDY_COPY.md` (demo CTAs currently link to `https://chexustudio.com/work/`)
 5. Lead notification destination (email/CRM) not connected
 6. (Optional) Real D1 database if portfolio-lead persistence is required
